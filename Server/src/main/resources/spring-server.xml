@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!-- Define entity manager factory bean -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="QuickHiring_App" />
+    </bean>
+
+    <!-- Define transaction manager bean -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="userRepository" class="repository.userRepository.UserRepositoryImpl">
+        <constructor-arg ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="resumeRepository" class="repository.resumeRepository.ResumeRepositoryImpl">
+        <constructor-arg ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="locationRepository" class="repository.locationRepository.LocationRepositoryImpl">
+        <constructor-arg ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="jobRepository" class="repository.jobRepository.JobRepositoryImpl">
+        <constructor-arg ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="companyRepository" class="repository.companyRepository.CompanyRepositoryImpl">
+        <constructor-arg ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="applicationForJobRepository" class="repository.applicationForJobRepository.ApplicationForJobRepositoryImpl">
+        <constructor-arg ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="imageDataRepository" class="repository.imageDataRepository.ImageDataRepositoryImpl">
+        <constructor-arg ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="service" class="ServiceImpl">
+        <constructor-arg ref="userRepository"/>
+        <constructor-arg ref="resumeRepository"/>
+        <constructor-arg ref="locationRepository"/>
+        <constructor-arg ref="jobRepository"/>
+        <constructor-arg ref="companyRepository"/>
+        <constructor-arg ref="applicationForJobRepository"/>
+        <constructor-arg ref="imageDataRepository"/>
+    </bean>
+
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="ClientServer"/>
+        <property name="service" ref="service"/>
+        <property name="serviceInterface" value="IService"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+
+
+</beans>

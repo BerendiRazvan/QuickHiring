@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddOrModifyJobController">
+   <children>
+      <Button fx:id="backViewButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBackView" text="back" />
+      <TextField fx:id="titleTextField" layoutX="23.0" layoutY="83.0" />
+      <TextArea fx:id="descriptionTextArea" layoutX="23.0" layoutY="144.0" prefHeight="111.0" prefWidth="342.0" />
+      <Label layoutX="23.0" layoutY="59.0" text="job title" />
+      <Label fx:id="pageLabel" layoutX="413.0" layoutY="11.0" text="add/modify job">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="126.0" text="job description" />
+      <Label layoutX="20.0" layoutY="266.0" />
+      <CheckBox fx:id="openForApplicationsCheckBox" layoutX="219.0" layoutY="87.0" mnemonicParsing="false" selected="true" text="open for applications" />
+      <ComboBox fx:id="jobTypeComboBox" layoutX="122.0" layoutY="284.0" prefWidth="150.0" promptText="Job type" />
+      <ComboBox fx:id="experienceLevelComboBox" layoutX="122.0" layoutY="320.0" prefWidth="150.0" promptText="Experience level" />
+      <ComboBox fx:id="employmentTypeComboBox" layoutX="122.0" layoutY="357.0" prefWidth="150.0" promptText="Employment type" />
+      <Label layoutX="20.0" layoutY="288.0" text="job type" />
+      <Label layoutX="20.0" layoutY="324.0" text="experience level" />
+      <Label layoutX="20.0" layoutY="364.0" text="employment type" />
+      <Button fx:id="addModifyButton" layoutX="413.0" layoutY="359.0" mnemonicParsing="false" onAction="#anActionAddOrModifyJob" prefHeight="26.0" prefWidth="174.0" text="add/modify job" />
+      <ListView fx:id="companyList" layoutX="439.0" layoutY="79.0" prefHeight="200.0" prefWidth="115.0" />
+      <Label layoutX="476.0" layoutY="61.0" text="company" />
+      <ComboBox fx:id="locationsComboBox" disable="true" layoutX="435.0" layoutY="300.0" prefHeight="26.0" prefWidth="122.0" promptText="Location" />
+      <Label layoutX="447.0" layoutY="279.0" text="company locations" />
+      <Label fx:id="errorJTitleLabel" layoutX="20.0" layoutY="109.0" text="error ..." textFill="RED" />
+      <Label fx:id="errorJDLabel" layoutX="24.0" layoutY="253.0" text="error ..." textFill="RED" />
+      <Label fx:id="errorJTLabel" layoutX="281.0" layoutY="288.0" text="error ..." textFill="RED" />
+      <Label fx:id="errorELLabel" layoutX="281.0" layoutY="326.0" text="error ..." textFill="RED" />
+      <Label fx:id="errorETLabel" layoutX="281.0" layoutY="361.0" text="error ..." textFill="RED" />
+      <Label fx:id="errorCLLabel" layoutX="478.0" layoutY="330.0" text="error ..." textFill="RED" />
+      <Button fx:id="infoButton" layoutX="557.0" layoutY="78.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="22.0" text="i" />
+   </children>
+</AnchorPane>

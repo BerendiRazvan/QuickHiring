@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddOrModifyAccountController">
+   <children>
+      <Label fx:id="titlePageLabel" layoutX="14.0" layoutY="14.0" text="create/modify account">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstNameTextField" layoutX="14.0" layoutY="113.0" />
+      <TextField fx:id="lastNameTextField" layoutX="182.0" layoutY="113.0" />
+      <TextField fx:id="mailTextField" layoutX="16.0" layoutY="191.0" />
+      <TextField fx:id="mailCTextField" layoutX="182.0" layoutY="191.0" />
+      <DatePicker fx:id="birthDatePicker" layoutX="182.0" layoutY="338.0" />
+      <TextField fx:id="phoneNumberTextField" layoutX="16.0" layoutY="337.0" />
+      <Label fx:id="firstNameLabel" layoutX="16.0" layoutY="96.0" text="first name" />
+      <Label fx:id="lastNameLabel" layoutX="184.0" layoutY="96.0" text="last name" />
+      <Label fx:id="mailLabel" layoutX="17.0" layoutY="173.0" text="mail" />
+      <Label fx:id="mailConfirmationLabel" layoutX="185.0" layoutY="173.0" text="mail confirmation" />
+      <PasswordField fx:id="passwordTextField" layoutX="16.0" layoutY="266.0" />
+      <PasswordField fx:id="passwordCTextField" layoutX="181.0" layoutY="266.0" />
+      <Label fx:id="passwordLabel" layoutX="17.0" layoutY="250.0" text="password" />
+      <Label fx:id="passwordConfirmationLabel" layoutX="185.0" layoutY="250.0" text="confirm password" />
+      <Label fx:id="birthDateLabel" layoutX="184.0" layoutY="315.0" text="birth date" />
+      <Label fx:id="phoneNumberLabel" layoutX="17.0" layoutY="315.0" text="phone number" />
+      <Label fx:id="errorATLabel" layoutX="15.0" layoutY="81.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorPLabel" layoutX="16.0" layoutY="295.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorPCLabel" layoutX="180.0" layoutY="295.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorPNoLabel" layoutX="16.0" layoutY="364.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorMCLabel" layoutX="181.0" layoutY="217.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorMLabel" layoutX="15.0" layoutY="217.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorFNLabel" layoutX="13.0" layoutY="139.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorLNLabel" layoutX="181.0" layoutY="139.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Label fx:id="errorBDLabel" layoutX="182.0" layoutY="367.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Button fx:id="backButton" layoutY="-1.0" mnemonicParsing="false" onAction="#onActionBack" text="back" />
+      <Button fx:id="uploadResumeButton" layoutX="173.0" layoutY="54.0" mnemonicParsing="false" onAction="#onActionSelectResume" prefHeight="26.0" prefWidth="213.0" text="upload your resume" />
+      <Label fx:id="errorRLabel" layoutX="180.0" layoutY="80.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Button fx:id="uploadImageButton" layoutX="395.0" layoutY="194.0" mnemonicParsing="false" onAction="#onActionSelectPhoto" prefHeight="26.0" prefWidth="164.0" text="upload a profile picture" />
+      <Label fx:id="errorImgLabel" layoutX="401.0" layoutY="222.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
+      <Button fx:id="createModifyAccountButton" layoutX="410.0" layoutY="337.0" mnemonicParsing="false" onAction="#onActionCreateModifyAccount" text="create/modify account" />
+      <ComboBox fx:id="accountTypeBox" layoutX="14.0" layoutY="55.0" prefWidth="150.0" promptText="Account type" />
+      <ImageView fx:id="imageProfileView" fitHeight="101.0" fitWidth="94.0" layoutX="431.0" layoutY="89.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
