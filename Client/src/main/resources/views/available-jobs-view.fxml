@@ -6,23 +6,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AvailableJobsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AvailableJobsController">
     <children>
-        <Label layoutX="61.0" layoutY="12.0" prefHeight="18.0" prefWidth="54.0" text="Jobs list">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-        <Button fx:id="backButton" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" onAction="#onActionBackView" text="back" />
-        <AnchorPane layoutX="286.0" layoutY="56.0" prefHeight="338.0" prefWidth="300.0" style="-fx-border-color: black;">
-            <children>
-                <Button fx:id="applyButton" layoutX="245.0" layoutY="298.0" mnemonicParsing="false" onAction="#onActionApply" text="Apply" />
-                <Label fx:id="selectedJobLabel" layoutX="22.0" layoutY="14.0" text="selected job info" />
-            </children>
-        </AnchorPane>
-      <TableView fx:id="jobsTableView" layoutX="14.0" layoutY="52.0" prefHeight="338.0" prefWidth="266.0">
+      <TableView fx:id="jobsTableView" layoutX="658.0" layoutY="122.0" prefHeight="390.0" prefWidth="396.0" stylesheets="@../styles/table-style.css" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="125.0">
         <columns>
           <TableColumn fx:id="jobTitleTableColumn" prefWidth="75.0" text="Title" />
           <TableColumn fx:id="jobCompanyTableColumn" prefWidth="75.0" text="Company" />
@@ -32,7 +23,38 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="searchBarTextField" layoutX="13.0" layoutY="26.0" prefHeight="26.0" prefWidth="162.0" promptText="Search jobs" />
-      <ComboBox fx:id="orderByDate" layoutX="175.0" layoutY="26.0" prefHeight="26.0" prefWidth="118.0" promptText="Order by date" />
+      <AnchorPane id="paneMain" layoutX="-26.0" prefHeight="550.0" prefWidth="458.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <Button fx:id="backButton" layoutX="25.0" layoutY="31.0" maxWidth="32.0" mnemonicParsing="false" onAction="#onActionBackView" prefHeight="32.0" stylesheets="@../styles/button-style.css" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/backBtnImg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+              <AnchorPane id="profileCard" layoutX="66.0" layoutY="78.0" prefHeight="438.0" prefWidth="360.0" style="-fx-background-color: transparent;" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="75.0">
+                  <children>
+                      <Button fx:id="applyButton" layoutX="228.0" layoutY="395.0" mnemonicParsing="false" onAction="#onActionApply" prefHeight="30.0" prefWidth="73.0" stylesheets="@../styles/button-style.css" text="Apply" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="57.0" />
+                      <Label id="info_label" fx:id="selectedJobLabel" alignment="TOP_LEFT" layoutX="20.5" layoutY="20.5" prefHeight="371.0" prefWidth="325.0" style="-fx-background-color: transparent; -fx-font-weight: bold;" stylesheets="@../styles/label-style.css" text="selected job info" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <ImageView fitHeight="43.0" fitWidth="63.0" layoutX="306.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.5" AnchorPane.rightAnchor="5.0">
+                     <image>
+                        <Image url="@../images/loginPageLogo.png" />
+                     </image>
+                  </ImageView>
+                  </children>
+              </AnchorPane>
+            <Label alignment="CENTER" layoutX="72.0" layoutY="18.0" prefHeight="35.0" prefWidth="202.0" text="Available jobs" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ComboBox fx:id="orderByDate" layoutX="767.0" layoutY="76.0" prefHeight="40.0" prefWidth="132.0" promptText="Order by date" stylesheets="@../styles/combo-box-style.css" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="75.0" />
+      <TextField fx:id="searchBarTextField" layoutX="504.0" layoutY="75.0" prefHeight="43.0" prefWidth="261.0" promptText="Search job" stylesheets="@../styles/text-field-style.css" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="75.0" />
+      <Label id="info_label" layoutX="515.0" layoutY="64.0" stylesheets="@../styles/label-style.css" text="Search job " AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="65.0" />
+      <ImageView fitHeight="26.0" fitWidth="32.0" layoutX="744.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

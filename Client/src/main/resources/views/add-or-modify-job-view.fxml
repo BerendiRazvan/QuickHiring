@@ -7,40 +7,59 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddOrModifyJobController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddOrModifyJobController">
    <children>
-      <Button fx:id="backViewButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBackView" text="back" />
-      <TextField fx:id="titleTextField" layoutX="23.0" layoutY="83.0" />
-      <TextArea fx:id="descriptionTextArea" layoutX="23.0" layoutY="144.0" prefHeight="111.0" prefWidth="342.0" />
-      <Label layoutX="23.0" layoutY="59.0" text="job title" />
-      <Label fx:id="pageLabel" layoutX="413.0" layoutY="11.0" text="add/modify job">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="23.0" layoutY="126.0" text="job description" />
+      <TextField fx:id="titleTextField" layoutX="472.0" layoutY="86.0" prefHeight="43.0" prefWidth="250.0" promptText="Enter job title" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="75.0" />
+      <TextArea fx:id="descriptionTextArea" layoutX="467.0" layoutY="167.0" prefHeight="111.0" prefWidth="426.0" promptText="Enter job description" stylesheets="@../styles/text-area-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="165.0" />
+      <Label id="info_label" layoutX="487.0" layoutY="75.0" stylesheets="@../styles/label-style.css" text="Job title " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" />
+      <Label id="info_label" layoutX="477.0" layoutY="156.0" stylesheets="@../styles/label-style.css" text="Job description " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="155.0" />
       <Label layoutX="20.0" layoutY="266.0" />
-      <CheckBox fx:id="openForApplicationsCheckBox" layoutX="219.0" layoutY="87.0" mnemonicParsing="false" selected="true" text="open for applications" />
-      <ComboBox fx:id="jobTypeComboBox" layoutX="122.0" layoutY="284.0" prefWidth="150.0" promptText="Job type" />
-      <ComboBox fx:id="experienceLevelComboBox" layoutX="122.0" layoutY="320.0" prefWidth="150.0" promptText="Experience level" />
-      <ComboBox fx:id="employmentTypeComboBox" layoutX="122.0" layoutY="357.0" prefWidth="150.0" promptText="Employment type" />
-      <Label layoutX="20.0" layoutY="288.0" text="job type" />
-      <Label layoutX="20.0" layoutY="324.0" text="experience level" />
-      <Label layoutX="20.0" layoutY="364.0" text="employment type" />
-      <Button fx:id="addModifyButton" layoutX="413.0" layoutY="359.0" mnemonicParsing="false" onAction="#anActionAddOrModifyJob" prefHeight="26.0" prefWidth="174.0" text="add/modify job" />
-      <ListView fx:id="companyList" layoutX="439.0" layoutY="79.0" prefHeight="200.0" prefWidth="115.0" />
-      <Label layoutX="476.0" layoutY="61.0" text="company" />
-      <ComboBox fx:id="locationsComboBox" disable="true" layoutX="435.0" layoutY="300.0" prefHeight="26.0" prefWidth="122.0" promptText="Location" />
-      <Label layoutX="447.0" layoutY="279.0" text="company locations" />
-      <Label fx:id="errorJTitleLabel" layoutX="20.0" layoutY="109.0" text="error ..." textFill="RED" />
-      <Label fx:id="errorJDLabel" layoutX="24.0" layoutY="253.0" text="error ..." textFill="RED" />
-      <Label fx:id="errorJTLabel" layoutX="281.0" layoutY="288.0" text="error ..." textFill="RED" />
-      <Label fx:id="errorELLabel" layoutX="281.0" layoutY="326.0" text="error ..." textFill="RED" />
-      <Label fx:id="errorETLabel" layoutX="281.0" layoutY="361.0" text="error ..." textFill="RED" />
-      <Label fx:id="errorCLLabel" layoutX="478.0" layoutY="330.0" text="error ..." textFill="RED" />
-      <Button fx:id="infoButton" layoutX="557.0" layoutY="78.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="22.0" text="i" />
+      <CheckBox id="info_checkbox" fx:id="openForApplicationsCheckBox" layoutX="687.0" layoutY="65.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="203.0" selected="true" stylesheets="@../styles/check-box-style.css" text="open for applications" AnchorPane.leftAnchor="675.0" AnchorPane.topAnchor="65.0" />
+      <ComboBox fx:id="jobTypeComboBox" layoutX="753.0" layoutY="365.0" prefHeight="28.0" prefWidth="100.0" promptText="Job type" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="350.0" />
+      <ComboBox fx:id="experienceLevelComboBox" layoutX="413.0" layoutY="365.0" prefHeight="28.0" prefWidth="150.0" promptText="Experience level" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="350.0" />
+      <ComboBox fx:id="employmentTypeComboBox" layoutX="585.0" layoutY="365.0" prefHeight="28.0" prefWidth="157.0" promptText="Employment type" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="350.0" />
+      <Label id="info_label" alignment="CENTER" layoutX="760.0" layoutY="347.0" prefWidth="100.0" stylesheets="@../styles/label-style.css" text="Job type" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="325.0" />
+      <Label id="info_label" alignment="CENTER" layoutX="583.0" layoutY="336.0" prefWidth="157.0" stylesheets="@../styles/label-style.css" text="Employment type" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="325.0" />
+      <Label fx:id="errorJTitleLabel" layoutX="448.0" layoutY="125.0" prefHeight="18.0" prefWidth="250.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="errorJDLabel" layoutX="397.0" layoutY="276.0" prefHeight="18.0" prefWidth="250.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="275.0" />
+      <Label fx:id="errorJTLabel" layoutX="763.0" layoutY="393.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="380.0" />
+      <Label fx:id="errorETLabel" layoutX="595.0" layoutY="393.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="380.0" />
+      <Label fx:id="errorELLabel" layoutX="420.0" layoutY="380.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="380.0" />
+      <ImageView fitHeight="104.0" fitWidth="150.0" layoutX="783.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="50.0">
+         <image>
+            <Image url="@../images/loginPageLogo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="addModifyButton" layoutX="571.0" layoutY="464.0" mnemonicParsing="false" onAction="#anActionAddOrModifyJob" prefHeight="37.0" prefWidth="175.0" style="-fx-font-weight: bold;" stylesheets="@../styles/button-style.css" text="add/modify job" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="200.0" />
+      <AnchorPane id="paneMain" layoutX="-3.0" layoutY="-2.0" prefHeight="550.0" prefWidth="434.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="backViewButton" layoutX="10.0" layoutY="22.0" mnemonicParsing="false" onAction="#onActionBackView" prefHeight="32.0" prefWidth="32.0" stylesheets="@../styles/button-style.css" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/backBtnImg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="pageLabel" alignment="CENTER" layoutX="65.0" layoutY="22.0" prefWidth="194.0" text="add/modify job" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <ListView fx:id="companyList" layoutX="57.0" layoutY="125.0" prefHeight="250.0" prefWidth="194.0" stylesheets="@../styles/list-style.css" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="125.0" />
+            <Label id="info_label" alignment="CENTER" layoutX="57.0" layoutY="100.0" prefHeight="22.0" prefWidth="194.0" style="-fx-background-color: transparent;" stylesheets="@../styles/label-style.css" text="Select the company" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="100.0" />
+            <ComboBox fx:id="locationsComboBox" disable="true" layoutX="93.0" layoutY="422.0" prefHeight="28.0" prefWidth="194.0" promptText="Location" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="425.0" />
+            <Label id="info_label" alignment="CENTER" layoutX="57.0" layoutY="400.0" prefHeight="22.0" prefWidth="194.0" style="-fx-background-color: transaprent;" stylesheets="@../styles/label-style.css" text="Company locations" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="400.0" />
+            <Label fx:id="errorCLLabel" layoutX="93.0" layoutY="460.0" prefHeight="18.0" prefWidth="194.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="460.0" />
+            <Button fx:id="infoButton" layoutX="27.0" layoutY="125.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-font-weight: bold;" stylesheets="@../styles/button-style.css" text="i" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="125.0" />
+         </children>
+      </AnchorPane>
+      <Label id="info_label" alignment="CENTER" layoutX="419.0" layoutY="336.0" prefWidth="150.0" stylesheets="@../styles/label-style.css" text="Experience level" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="325.0" />
    </children>
 </AnchorPane>

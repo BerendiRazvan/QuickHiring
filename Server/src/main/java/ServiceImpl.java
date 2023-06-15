@@ -122,6 +122,7 @@ public class ServiceImpl implements IService {
 
             userRepository.update(id, user);
             Optional<User> userUpdated = userRepository.findById(id);
+
             if (userUpdated.isPresent())
                 return userUpdated.get();
             else
@@ -391,9 +392,30 @@ public class ServiceImpl implements IService {
         job.setJobAvailability(JobAvailability.CLOSED);
         try {
             jobRepository.update(job.getId(), job);
+            updateApplicationsToRejected(job);
         } catch (RepositoryException e) {
             throw new ServiceException(e.getMessage());
         }
+    }
+
+    private void updateApplicationsToRejected(Job job) {
+        List<ApplicationForJob> allApplicationsForThisJob = applicationForJobRepository.findAll()
+                .stream()
+                .filter(application -> application.getJobApplied().getId().equals(job.getId()))
+                .peek(application -> {
+                    if (application.getApplicationStatus() != ApplicationStatus.ACCEPTED)
+                        application.setApplicationStatus(ApplicationStatus.REJECTED);
+                })
+                .collect(Collectors.toList());
+
+        allApplicationsForThisJob.forEach(application -> {
+            try {
+                applicationForJobRepository.update(application.getId(), application);
+            } catch (RepositoryException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     @Override

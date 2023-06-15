@@ -78,10 +78,14 @@ public class ParseApplicantProfileDetails {
     public ApplicantProfileDetails getApplicantProfileDetails(ResumeDocument resumeDocument) {
         ApplicantProfileDetails applicant = new ApplicantProfileDetails();
 
-        applicant.setPhoneNumber(findPhoneNumber(resumeDocument.getDocumentContent()));
-        applicant.setEmail(findEmail(resumeDocument.getDocumentContent()));
-        applicant.setLinks(findLinks(resumeDocument.getDocumentContent()));
-        applicant.setProfile(findProfile(resumeDocument.getDocumentContent()));
+        try {
+            applicant.setPhoneNumber(findPhoneNumber(resumeDocument.getDocumentContent()));
+            applicant.setEmail(findEmail(resumeDocument.getDocumentContent()));
+            applicant.setLinks(findLinks(resumeDocument.getDocumentContent()));
+            applicant.setProfile(findProfile(resumeDocument.getDocumentContent()));
+        }catch (Exception e){
+            System.out.println("Invalid C.V. file");
+        }
 
         if (new ParserHelper().getIndexOfThisSection(AnalyzeRegex.OBJECTIVE, resumeDocument.getDocumentContent()) != -1) {
             applicant.setObjective(findObjective(resumeDocument.getDocumentContent()));

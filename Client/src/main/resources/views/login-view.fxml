@@ -4,22 +4,75 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
-      <TextField fx:id="mailTextField" layoutX="170.0" layoutY="131.0" prefHeight="26.0" prefWidth="150.0" />
-      <Label fx:id="pageTitleLabel" layoutX="171.0" layoutY="57.0" text="Login">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="mailLabel" layoutX="181.0" layoutY="113.0" text="mail:" />
-      <Label fx:id="passwordLabel" layoutX="183.0" layoutY="170.0" text="password" />
-      <Label fx:id="errorLabel" layoutX="179.0" layoutY="219.0" prefHeight="18.0" prefWidth="262.0" text="error..." textFill="RED" />
-      <Button fx:id="loginButton" layoutX="173.0" layoutY="259.0" mnemonicParsing="false" onAction="#onActionLogin" prefHeight="26.0" prefWidth="94.0" text="login" />
-      <Button fx:id="createAccountButton" layoutX="174.0" layoutY="295.0" mnemonicParsing="false" onAction="#onActionOpenAddOrModifyAccountView" text="create account" />
-      <PasswordField fx:id="passwordTextField" layoutX="171.0" layoutY="188.0" />
+      <AnchorPane id="paneMain" layoutY="1.0" prefHeight="550.0" prefWidth="549.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="215.0" fitWidth="313.0" layoutX="84.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="192.0">
+               <image>
+                  <Image url="@../images/loginPageLogo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="121.0" layoutY="75.0" text="QuickHiring" textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="90.0">
+               <font>
+                  <Font name="Calibri Bold" size="50.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="161.0" layoutY="134.0" prefHeight="18.0" prefWidth="256.0" text="Find a job easier and quicker" textAlignment="CENTER" textFill="#e77218" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="150.0">
+               <font>
+                  <Font name="Calibri Light" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="paneLogin" layoutX="572.0" layoutY="3.0" prefHeight="550.0" prefWidth="378.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="mailTextField" alignment="BOTTOM_LEFT" layoutX="58.0" layoutY="216.0" prefHeight="43.0" prefWidth="265.0" promptText="Enter your email" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </TextField>
+            <Label fx:id="pageTitleLabel" alignment="CENTER" layoutX="92.0" layoutY="138.0" prefHeight="35.0" prefWidth="121.0" text="Login" textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="125.0">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label id="info_label" fx:id="mailLabel" layoutX="69.0" layoutY="205.0" style="-fx-background-color: white;" stylesheets="@../styles/label-style.css" text="Email " textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="190.0">
+               <font>
+                  <Font name="Calibri" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorLabel" alignment="CENTER" layoutX="45.0" layoutY="456.0" prefHeight="79.0" prefWidth="198.0" text="errors..." textAlignment="CENTER" textFill="RED" visible="false" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="425.0">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="loginButton" layoutX="103.0" layoutY="376.0" mnemonicParsing="false" onAction="#onActionLogin" prefHeight="26.0" prefWidth="94.0" stylesheets="@../styles/button-style.css" text="Sign in" textFill="WHITE" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="172.0" AnchorPane.topAnchor="355.0">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="createAccountButton" layoutX="85.0" layoutY="411.0" mnemonicParsing="false" onAction="#onActionOpenAddOrModifyAccountView" stylesheets="@../styles/button-style.css" text="Create account" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="390.0">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="passwordTextField" alignment="BOTTOM_LEFT" layoutX="55.0" layoutY="286.0" prefHeight="43.0" prefWidth="265.0" promptText="Enter your password" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="270.0">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </PasswordField>
+            <Label id="info_label" fx:id="passwordLabel" layoutX="69.0" layoutY="275.0" style="-fx-background-color: white;" stylesheets="@../styles/label-style.css" text="Password " textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="260.0">
+               <font>
+                  <Font name="Calibri" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

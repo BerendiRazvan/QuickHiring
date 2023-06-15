@@ -221,7 +221,7 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
         try {
             setManageJobsController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - Manage jobs");
+            stage.setTitle("QuickHiring - Manage jobs");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -373,6 +373,7 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
                 if (item == null) {
                     setText(null);
                 } else {
+
                     User candidate = item.getCandidateResume().getOwner();
                     double matchingValue = server.getResumeJobMatchingScore(item.getCandidateResume(), item.getJobApplied()) * 100;
                     DecimalFormat df = new DecimalFormat("#.##");
@@ -381,19 +382,21 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
                     setText(candidate.getFirstName() + " " + candidate.getLastName() + " - " +
                             formattedValue + "%");
 
-                    super.updateItem(item, empty);
                     if (item == null) {
                         setStyle("");
                     } else if (item.getApplicationStatus() == ApplicationStatus.REJECTED) {
-                        setText(item.toString());
+                        setText(candidate.getFirstName() + " " + candidate.getLastName() + " - " +
+                                formattedValue + "%");
                         setGraphic(null);
                         setStyle("-fx-background-color: #ffcfc2;");
                     } else if (item.getApplicationStatus() == ApplicationStatus.ACCEPTED) {
-                        setText(item.toString());
+                        setText(candidate.getFirstName() + " " + candidate.getLastName() + " - " +
+                                formattedValue + "%");
                         setGraphic(null);
                         setStyle("-fx-background-color: #d7ffc8;");
                     } else {
-                        setText(item.toString());
+                        setText(candidate.getFirstName() + " " + candidate.getLastName() + " - " +
+                                formattedValue + "%");
                     }
                 }
             }

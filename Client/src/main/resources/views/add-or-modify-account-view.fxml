@@ -1,54 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddOrModifyAccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddOrModifyAccountController">
    <children>
-      <Label fx:id="titlePageLabel" layoutX="14.0" layoutY="14.0" text="create/modify account">
+      <TextField fx:id="firstNameTextField" layoutX="445.0" layoutY="74.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter first name" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="100.0" />
+      <TextField fx:id="lastNameTextField" layoutX="724.0" layoutY="74.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter last name" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="100.0">
+         <stylesheets>
+            <URL value="@../styles/button-style.css" />
+            <URL value="@../styles/text-field-style.css" />
+         </stylesheets></TextField>
+      <TextField fx:id="mailTextField" layoutX="443.0" layoutY="159.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter email " stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="185.0">
          <font>
-            <Font size="30.0" />
+            <Font name="Calibri" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="mailCTextField" layoutX="725.0" layoutY="181.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter email again" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="185.0" />
+      <DatePicker fx:id="birthDatePicker" layoutX="729.0" layoutY="287.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter your birth date" stylesheets="@../styles/date-picker-style.css" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="270.0" />
+      <TextField fx:id="phoneNumberTextField" layoutX="443.0" layoutY="264.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter phone number" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="270.0" />
+      <Label id="info_label" fx:id="lastNameLabel" layoutX="724.0" layoutY="55.0" stylesheets="@../styles/label-style.css" text="Last name " AnchorPane.leftAnchor="710.0" AnchorPane.topAnchor="90.0" />
+      <Label id="info_label" fx:id="mailLabel" layoutX="461.0" layoutY="152.0" stylesheets="@../styles/label-style.css" text="Email" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="175.0" />
+      <Label id="info_label" fx:id="mailConfirmationLabel" layoutX="724.0" layoutY="159.0" stylesheets="@../styles/label-style.css" text="Email confirmation " AnchorPane.leftAnchor="710.0" AnchorPane.topAnchor="175.0" />
+      <PasswordField fx:id="passwordTextField" layoutX="443.0" layoutY="359.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter password" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="355.0" />
+      <PasswordField fx:id="passwordCTextField" layoutX="690.0" layoutY="365.0" prefHeight="43.0" prefWidth="210.0" promptText="Enter password again" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="355.0" />
+      <Label id="info_label" fx:id="passwordLabel" layoutX="444.0" layoutY="343.0" stylesheets="@../styles/label-style.css" text="Password " AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="345.0" />
+      <Label id="info_label" fx:id="passwordConfirmationLabel" layoutX="694.0" layoutY="349.0" stylesheets="@../styles/label-style.css" text="Confirm password " AnchorPane.leftAnchor="710.0" AnchorPane.topAnchor="345.0" />
+      <Label id="info_label" fx:id="birthDateLabel" layoutX="731.0" layoutY="264.0" stylesheets="@../styles/label-style.css" text="Birth date " AnchorPane.leftAnchor="710.0" AnchorPane.topAnchor="260.0" />
+      <Label id="info_label" fx:id="phoneNumberLabel" layoutX="447.0" layoutY="242.0" stylesheets="@../styles/label-style.css" text="Phone number " AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="260.0" />
+      <Label fx:id="errorPLabel" layoutX="443.0" layoutY="408.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="395.0" />
+      <Label fx:id="errorPCLabel" layoutX="689.0" layoutY="394.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="395.0" />
+      <Label fx:id="errorPNoLabel" layoutX="450.0" layoutY="298.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="310.0" />
+      <Label fx:id="errorMCLabel" layoutX="740.0" layoutY="224.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="225.0" />
+      <Label fx:id="errorMLabel" layoutX="443.0" layoutY="202.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="225.0" />
+      <Label fx:id="errorFNLabel" layoutX="450.0" layoutY="143.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="140.0" />
+      <Label fx:id="errorLNLabel" layoutX="740.0" layoutY="116.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="140.0" />
+      <Label fx:id="errorBDLabel" layoutX="700.0" layoutY="298.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="310.0" />
+      <Button fx:id="createModifyAccountButton" layoutX="575.0" layoutY="441.0" mnemonicParsing="false" onAction="#onActionCreateModifyAccount" prefHeight="37.0" prefWidth="175.0" style="-fx-font-weight: bold;" stylesheets="@../styles/button-style.css" text="create/modify account" textFill="#3342c7" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="190.0">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <AnchorPane id="paneMain" prefHeight="500.0" prefWidth="449.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="titlePageLabel" alignment="CENTER" layoutX="77.0" layoutY="20.0" text="Create/Modify your account" textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#onActionBack" prefHeight="32.0" prefWidth="32.0" stylesheets="@../styles/button-style.css" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/backBtnImg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fx:id="imageProfileView" fitHeight="126.0" fitWidth="107.0" layoutX="150.0" layoutY="133.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="135.0" />
+            <Button fx:id="uploadImageButton" layoutX="94.0" layoutY="242.0" mnemonicParsing="false" onAction="#onActionSelectPhoto" prefHeight="28.0" prefWidth="175.0" text="Upload a profile picture" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="270.0">
+               <stylesheets>
+                  <URL value="@../styles/text-field-style.css" />
+                  <URL value="@../styles/button-style.css" />
+               </stylesheets>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="errorImgLabel" alignment="CENTER" layoutX="106.0" layoutY="250.0" prefHeight="35.0" prefWidth="150.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="300.0" />
+            <ComboBox fx:id="accountTypeBox" layoutX="99.0" layoutY="328.0" prefHeight="30.0" prefWidth="164.0" promptText="Account type" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="365.0" />
+            <Label fx:id="errorATLabel" alignment="CENTER" layoutX="100.0" layoutY="358.0" prefHeight="35.0" prefWidth="164.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="400.0" />
+            <Button fx:id="uploadResumeButton" layoutX="75.0" layoutY="412.0" mnemonicParsing="false" onAction="#onActionSelectResume" prefHeight="26.0" prefWidth="213.0" stylesheets="@../styles/button-style.css" text="Upload your resume" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="450.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="errorRLabel" alignment="CENTER" layoutX="75.0" layoutY="440.0" prefHeight="35.0" prefWidth="214.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="480.0" />
+         </children>
+      </AnchorPane>
+      <Label id="info_label" fx:id="firstNameLabel" layoutX="450.0" layoutY="55.0" stylesheets="@../styles/label-style.css" text="First name " textFill="#2d3367" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="90.0">
+         <font>
+            <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="firstNameTextField" layoutX="14.0" layoutY="113.0" />
-      <TextField fx:id="lastNameTextField" layoutX="182.0" layoutY="113.0" />
-      <TextField fx:id="mailTextField" layoutX="16.0" layoutY="191.0" />
-      <TextField fx:id="mailCTextField" layoutX="182.0" layoutY="191.0" />
-      <DatePicker fx:id="birthDatePicker" layoutX="182.0" layoutY="338.0" />
-      <TextField fx:id="phoneNumberTextField" layoutX="16.0" layoutY="337.0" />
-      <Label fx:id="firstNameLabel" layoutX="16.0" layoutY="96.0" text="first name" />
-      <Label fx:id="lastNameLabel" layoutX="184.0" layoutY="96.0" text="last name" />
-      <Label fx:id="mailLabel" layoutX="17.0" layoutY="173.0" text="mail" />
-      <Label fx:id="mailConfirmationLabel" layoutX="185.0" layoutY="173.0" text="mail confirmation" />
-      <PasswordField fx:id="passwordTextField" layoutX="16.0" layoutY="266.0" />
-      <PasswordField fx:id="passwordCTextField" layoutX="181.0" layoutY="266.0" />
-      <Label fx:id="passwordLabel" layoutX="17.0" layoutY="250.0" text="password" />
-      <Label fx:id="passwordConfirmationLabel" layoutX="185.0" layoutY="250.0" text="confirm password" />
-      <Label fx:id="birthDateLabel" layoutX="184.0" layoutY="315.0" text="birth date" />
-      <Label fx:id="phoneNumberLabel" layoutX="17.0" layoutY="315.0" text="phone number" />
-      <Label fx:id="errorATLabel" layoutX="15.0" layoutY="81.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorPLabel" layoutX="16.0" layoutY="295.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorPCLabel" layoutX="180.0" layoutY="295.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorPNoLabel" layoutX="16.0" layoutY="364.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorMCLabel" layoutX="181.0" layoutY="217.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorMLabel" layoutX="15.0" layoutY="217.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorFNLabel" layoutX="13.0" layoutY="139.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorLNLabel" layoutX="181.0" layoutY="139.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Label fx:id="errorBDLabel" layoutX="182.0" layoutY="367.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Button fx:id="backButton" layoutY="-1.0" mnemonicParsing="false" onAction="#onActionBack" text="back" />
-      <Button fx:id="uploadResumeButton" layoutX="173.0" layoutY="54.0" mnemonicParsing="false" onAction="#onActionSelectResume" prefHeight="26.0" prefWidth="213.0" text="upload your resume" />
-      <Label fx:id="errorRLabel" layoutX="180.0" layoutY="80.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Button fx:id="uploadImageButton" layoutX="395.0" layoutY="194.0" mnemonicParsing="false" onAction="#onActionSelectPhoto" prefHeight="26.0" prefWidth="164.0" text="upload a profile picture" />
-      <Label fx:id="errorImgLabel" layoutX="401.0" layoutY="222.0" prefHeight="18.0" prefWidth="150.0" text="error..." textFill="RED" />
-      <Button fx:id="createModifyAccountButton" layoutX="410.0" layoutY="337.0" mnemonicParsing="false" onAction="#onActionCreateModifyAccount" text="create/modify account" />
-      <ComboBox fx:id="accountTypeBox" layoutX="14.0" layoutY="55.0" prefWidth="150.0" promptText="Account type" />
-      <ImageView fx:id="imageProfileView" fitHeight="101.0" fitWidth="94.0" layoutX="431.0" layoutY="89.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="104.0" fitWidth="150.0" layoutX="761.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="50.0">
+         <image>
+            <Image url="@../images/loginPageLogo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

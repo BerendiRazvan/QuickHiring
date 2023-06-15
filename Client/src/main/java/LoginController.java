@@ -136,7 +136,7 @@ public class LoginController extends UnicastRemoteObject implements Serializable
             }
         });
 
-        stage.setTitle("Quick Hiring - Home - " + currentUser.getMail());
+        stage.setTitle("QuickHiring - Home - " + currentUser.getMail());
     }
 
     private void openAddOrModifyAccountView(ActionEvent actionEvent) {
@@ -151,7 +151,7 @@ public class LoginController extends UnicastRemoteObject implements Serializable
             }
         });
 
-        stage.setTitle("Quick Hiring - Create account");
+        stage.setTitle("QuickHiring - Create account");
     }
 
 }

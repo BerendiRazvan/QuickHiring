@@ -1,0 +1,11 @@
+.text-field {
+    -fx-border-width: 2;
+    -fx-border-radius: 12.5;
+    -fx-border-color: #2d3367;
+    -fx-background-color: transparent;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-alignment: bottom-left;
+    -fx-text-fill: #2d3367;
+}

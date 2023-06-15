@@ -3,6 +3,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.springframework.context.ApplicationContext;
@@ -63,7 +64,10 @@ public class StartClientFX extends Application {
         });
 
         primaryStage.setScene(new Scene(root));
-        primaryStage.setTitle("Quick Hiring - Login");
+        primaryStage.setMinWidth(950);
+        primaryStage.setMinHeight(550);
+        primaryStage.setTitle("QuickHiring - Login");
+        primaryStage.getIcons().add(new Image(StartClientFX.class.getResource("images/appLogo.jpg").toExternalForm()));
         primaryStage.show();
     }
 

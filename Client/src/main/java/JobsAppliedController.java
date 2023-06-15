@@ -157,7 +157,7 @@ public class JobsAppliedController extends UnicastRemoteObject implements Initia
         try {
             setHomeController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - Home - " + loggedUser.getMail());
+            stage.setTitle("QuickHiring - Home - " + loggedUser.getMail());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

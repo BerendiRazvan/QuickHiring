@@ -171,7 +171,7 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
         try {
             setManageJobsController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - Manage jobs");
+            stage.setTitle("QuickHiring - Manage jobs");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -276,7 +276,7 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
             try {
                 setManageJobsController();
                 openNextView(event);
-                stage.setTitle("Quick Hiring - Manage jobs");
+                stage.setTitle("QuickHiring - Manage jobs");
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }

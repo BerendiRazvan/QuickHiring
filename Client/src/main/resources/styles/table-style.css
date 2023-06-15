@@ -1,0 +1,93 @@
+.table-view {
+    -fx-border-width: 2;
+    -fx-border-radius: 12.5;
+    -fx-border-color: #2d3367;
+    -fx-background-color: transparent;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-alignment: center-left;
+}
+
+.table-view .table-row-cell {
+    -fx-border-width: 0.5;
+    -fx-border-radius: 12.5;
+    -fx-border-color: #bbbbbb;
+    -fx-background-color: transparent;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-alignment: center-left;
+    -fx-fill-width: true;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: linear-gradient(from 10% 10% to 90% 90%, #ffe8da, #e7ffea);
+    -fx-border-width: 0.5;
+    -fx-border-radius: 12.5;
+    -fx-border-color: #2d3367;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-alignment: center-left;
+    -fx-fill-width: true;
+}
+
+.table-view .column-header-background {
+    -fx-border-radius: 12.5;
+    -fx-background-color: transparent;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-alignment: center-left;
+    -fx-border-color: #2d3367;
+    -fx-border-width: 2;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-border-width: 0 1 0 0;
+    -fx-border-radius: 0;
+    -fx-border-color: #2d3367;
+    -fx-background-color: white;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+}
+
+.table-view .column-header .label {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-alignment: center-left;
+}
+
+.table-view .table-column {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-alignment: center-left;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-opacity: 0;
+}

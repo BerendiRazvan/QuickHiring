@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;
+<i class="no-highlight">2</i>&nbsp;// The class used for adding data and manual testing
+<b class="nc"><i class="no-highlight">3</i>&nbsp;public class Main {</b>
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;    public static void main(String[] args) {
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(&quot;QuickHiring_App&quot;);
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;//        UserRepository userRepository = new UserRepositoryImpl(entityManagerFactory);
+<i class="no-highlight">10</i>&nbsp;//        ResumeRepository resumeRepository = new ResumeRepositoryImpl(entityManagerFactory);
+<i class="no-highlight">11</i>&nbsp;//        LocationRepository locationRepository = new LocationRepositoryImpl(entityManagerFactory);
+<i class="no-highlight">12</i>&nbsp;//        JobRepository jobRepository = new JobRepositoryImpl(entityManagerFactory);
+<i class="no-highlight">13</i>&nbsp;//        CompanyRepository companyRepository = new CompanyRepositoryImpl(entityManagerFactory);
+<i class="no-highlight">14</i>&nbsp;//        ApplicationForJobRepository applicationForJobRepository = new ApplicationForJobRepositoryImpl(entityManagerFactory);
+<i class="no-highlight">15</i>&nbsp;//        ImageDataRepository imageDataRepository = new ImageDataRepositoryImpl(entityManagerFactory);
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;//        File file = new File(&quot;C:\\Users\\Razvan\\Desktop\\default_profile.png&quot;);
+<i class="no-highlight">19</i>&nbsp;//        System.out.println(file.getAbsolutePath());
+<i class="no-highlight">20</i>&nbsp;//        try {
+<i class="no-highlight">21</i>&nbsp;//            BufferedImage bufferedImage = null;
+<i class="no-highlight">22</i>&nbsp;//
+<i class="no-highlight">23</i>&nbsp;//            bufferedImage = ImageIO.read(file);
+<i class="no-highlight">24</i>&nbsp;//            WritableRaster raster = bufferedImage.getRaster();
+<i class="no-highlight">25</i>&nbsp;//            DataBufferByte data = (DataBufferByte) raster.getDataBuffer();
+<i class="no-highlight">26</i>&nbsp;//
+<i class="no-highlight">27</i>&nbsp;//            ImageData imageDataForUser = new ImageData();
+<i class="no-highlight">28</i>&nbsp;//            imageDataForUser.setImageData(data.getData());
+<i class="no-highlight">29</i>&nbsp;//            imageDataForUser.setId(1L);
+<i class="no-highlight">30</i>&nbsp;//            imageDataForUser.setName(&quot;default_profile_image&quot;);
+<i class="no-highlight">31</i>&nbsp;//            imageDataForUser.setType(file.getPath().substring(file.getPath().indexOf(&quot;.&quot;)));
+<i class="no-highlight">32</i>&nbsp;//
+<i class="no-highlight">33</i>&nbsp;//            System.out.println(imageDataForUser);
+<i class="no-highlight">34</i>&nbsp;//
+<i class="no-highlight">35</i>&nbsp;//            imageDataRepository.add(imageDataForUser);
+<i class="no-highlight">36</i>&nbsp;//
+<i class="no-highlight">37</i>&nbsp;//        } catch (IOException | RepositoryException e) {
+<i class="no-highlight">38</i>&nbsp;//            e.printStackTrace();
+<i class="no-highlight">39</i>&nbsp;//        }
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;//        entityManagerFactory.close();
+<i class="no-highlight">42</i>&nbsp;    }
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-14 17:40</div>
+</div>
+</body>
+</html>

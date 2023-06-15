@@ -1,0 +1,53 @@
+.combo-box-base {
+    -fx-text-fill: white;
+    -fx-background-color: #2b305e;
+    -fx-background-radius: 10;
+}
+
+.combo-box-base .text {
+    -fx-text-fill: white;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+}
+
+.combo-box-base:hover {
+    -fx-background-color: #24339f;
+}
+
+.combo-box-popup .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #2b305e;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #24339f;
+}
+
+.combo-box-base {
+    -fx-background-color: #2b305e;
+    -fx-background-radius: 10;
+}
+
+.combo-box-base .text,
+.combo-box-base .cell,
+.combo-box-base .list-cell {
+    -fx-text-fill: white;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+}
+
+.combo-box-base:hover {
+    -fx-background-color: #24339f;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #2b305e;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #24339f;
+}
+
+.combo-box-base .arrow-button .arrow {
+    -fx-background-color: white;
+}

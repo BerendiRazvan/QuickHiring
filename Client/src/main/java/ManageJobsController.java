@@ -108,10 +108,7 @@ public class ManageJobsController extends UnicastRemoteObject implements Initial
                     setStyle("");
                 } else if (item.getJobAvailability() == JobAvailability.CLOSED_FOR_APPLICATIONS) {
                     setGraphic(null);
-                    setStyle("-fx-background-color: #8f8f8f;");
-                } else {
-                    setGraphic(null);
-                    setStyle("-fx-background-color: #F5F5F5;");
+                    setStyle("-fx-background-color: #b6b6b6;");
                 }
             }
         });
@@ -187,7 +184,7 @@ public class ManageJobsController extends UnicastRemoteObject implements Initial
         try {
             setHomeController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - Home - " + loggedUser.getMail());
+            stage.setTitle("QuickHiring - Home - " + loggedUser.getMail());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -200,7 +197,7 @@ public class ManageJobsController extends UnicastRemoteObject implements Initial
             try {
                 setManageSelectionProcessViewController(job);
                 openNextView(event);
-                stage.setTitle("Quick Hiring - Manage job selection process");
+                stage.setTitle("QuickHiring - Manage job selection process");
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
@@ -213,7 +210,7 @@ public class ManageJobsController extends UnicastRemoteObject implements Initial
         try {
             setAddOrModifyJobController(null);
             openNextView(event);
-            stage.setTitle("Quick Hiring - Add job");
+            stage.setTitle("QuickHiring - Add job");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -226,7 +223,7 @@ public class ManageJobsController extends UnicastRemoteObject implements Initial
             try {
                 setAddOrModifyJobController(job);
                 openNextView(event);
-                stage.setTitle("Quick Hiring - Modify job");
+                stage.setTitle("QuickHiring - Modify job");
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }

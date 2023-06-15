@@ -1,0 +1,188 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ResumeParser</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">resumeAnalyzer</a>
+</div>
+
+<h1>Coverage Summary for Class: ResumeParser (resumeAnalyzer)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ResumeParser</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (27/27)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ResumeParser$MockitoMock$1496479410</td>
+  </tr>
+  <tr>
+    <td class="name">ResumeParser$MockitoMock$1496479410$auxiliary$10XEZZI5</td>
+  </tr>
+  <tr>
+    <td class="name">ResumeParser$MockitoMock$1496479410$auxiliary$8y0gZXQb</td>
+  </tr>
+  <tr>
+    <td class="name">ResumeParser$MockitoMock$1496479410$auxiliary$BsxPLheY</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (27/27)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package resumeAnalyzer;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;
+<i class="no-highlight">4</i>&nbsp;import domain.Resume;
+<i class="no-highlight">5</i>&nbsp;import resumeAnalyzer.entity.*;
+<i class="no-highlight">6</i>&nbsp;import resumeAnalyzer.parser.ParseApplicantEducation;
+<i class="no-highlight">7</i>&nbsp;import resumeAnalyzer.parser.ParseApplicantExperience;
+<i class="no-highlight">8</i>&nbsp;import resumeAnalyzer.parser.ParseApplicantProfileDetails;
+<i class="no-highlight">9</i>&nbsp;import resumeAnalyzer.parser.ParseApplicantSkill;
+<i class="no-highlight">10</i>&nbsp;import resumeAnalyzer.resumeReader.FileReaderFactory;
+<i class="no-highlight">11</i>&nbsp;import resumeAnalyzer.resumeReader.ResumeFileReader;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;import java.io.File;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;public class ResumeParser {
+<i class="no-highlight">16</i>&nbsp;
+<b class="fc"><i class="no-highlight">17</i>&nbsp;    private String profile = &quot;&quot;;</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;    private String education = &quot;&quot;;</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;    private String experience = &quot;&quot;;</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;    private String skill = &quot;&quot;;</b>
+<i class="no-highlight">21</i>&nbsp;
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    public ResumeParser() {</b>
+<i class="no-highlight">23</i>&nbsp;    }
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;    private void analyzeResumeContent(String content) {
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        ParseApplicantProfileDetails profileParser = new ParseApplicantProfileDetails();</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;        ParseApplicantEducation educationParser = new ParseApplicantEducation();</b>
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        ParseApplicantExperience experienceParser = new ParseApplicantExperience();</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        ParseApplicantSkill skillParser = new ParseApplicantSkill();</b>
+<i class="no-highlight">30</i>&nbsp;
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        ResumeDocument resumeDocument = new ResumeDocument(content);</b>
+<i class="no-highlight">32</i>&nbsp;
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        ApplicantProfileDetails applicantProfileDetails = profileParser.getApplicantProfileDetails(resumeDocument);</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;        ApplicantEducation applicantEducation = educationParser.getApplicantEducation(resumeDocument);</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        ApplicantExperience applicantExperience = experienceParser.getApplicantExperience(resumeDocument);</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        ApplicantSkill applicantSkill = skillParser.getApplicantSkills(resumeDocument);</b>
+<i class="no-highlight">37</i>&nbsp;
+<b class="fc"><i class="no-highlight">38</i>&nbsp;        profile = applicantProfileDetails.toString();</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        education = applicantEducation.toString();</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;        experience = applicantExperience.toString();</b>
+<b class="fc"><i class="no-highlight">41</i>&nbsp;        skill = applicantSkill.toString();</b>
+<i class="no-highlight">42</i>&nbsp;    }
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;    public Resume extractData(File resumeFile) {
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        Resume resumeResult = new Resume();</b>
+<i class="no-highlight">47</i>&nbsp;
+<i class="no-highlight">48</i>&nbsp;        // Read from file txt, pdf, doc, docx using factory pattern
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        ResumeFileReader resumeFileReader = FileReaderFactory.createFileReader(resumeFile);</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        String resumeContent = resumeFileReader.readFile(resumeFile);</b>
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;        // Analyze resume content with the analyzer method
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        analyzeResumeContent(resumeContent);</b>
+<i class="no-highlight">54</i>&nbsp;
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        resumeResult.setProfileExtractedData(profile);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        resumeResult.setEducationExtractedData(education);</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        resumeResult.setExperienceExtractedData(experience);</b>
+<b class="fc"><i class="no-highlight">58</i>&nbsp;        resumeResult.setSkillsExtractedData(skill);</b>
+<i class="no-highlight">59</i>&nbsp;
+<b class="fc"><i class="no-highlight">60</i>&nbsp;        return resumeResult;</b>
+<i class="no-highlight">61</i>&nbsp;    }
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;
+<i class="no-highlight">64</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-14 17:40</div>
+</div>
+</body>
+</html>

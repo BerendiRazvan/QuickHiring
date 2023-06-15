@@ -1,0 +1,23 @@
+#info_checkbox {
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+    -fx-background-color: white;
+    -fx-padding: 5px;
+}
+
+#info_checkbox .box {
+    -fx-background-color: white;
+    -fx-border-color: #2d3367;
+    -fx-border-width: 2px;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+}
+
+#info_checkbox .box:selected {
+    -fx-background-color: #2d3367;
+}
+
+#info_checkbox .box:selected .check-mark {
+    -fx-background-color: white;
+}

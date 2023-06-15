@@ -1,0 +1,204 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DocumentSimilarity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">similarityAnalyzer</a>
+</div>
+
+<h1>Coverage Summary for Class: DocumentSimilarity (similarityAnalyzer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DocumentSimilarity</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98.2%
+  </span>
+  <span class="absValue">
+    (55/56)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package similarityAnalyzer;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import java.util.*;
+<i class="no-highlight">4</i>&nbsp;
+<b class="fc"><i class="no-highlight">5</i>&nbsp;public class DocumentSimilarity {</b>
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;    // return score(cosineSimilarity): calculating score between two stings (using TF-IDF algorithm, with Cosine similarity score)
+<i class="no-highlight">8</i>&nbsp;    public double calculateMatchingScore(String documentContent1, String documentContent2) {
+<i class="no-highlight">9</i>&nbsp;
+<b class="fc"><i class="no-highlight">10</i>&nbsp;        List&lt;Map&lt;String, Double&gt;&gt; documentTermVectors = getTFIDFVectors(Arrays.asList(documentContent1, documentContent2));</b>
+<i class="no-highlight">11</i>&nbsp;
+<b class="fc"><i class="no-highlight">12</i>&nbsp;        Map&lt;String, Double&gt; document1Vector = documentTermVectors.get(0);</b>
+<b class="fc"><i class="no-highlight">13</i>&nbsp;        Map&lt;String, Double&gt; document2Vector = documentTermVectors.get(1);</b>
+<i class="no-highlight">14</i>&nbsp;
+<b class="fc"><i class="no-highlight">15</i>&nbsp;        return calculateCosineSimilarity(document1Vector, document2Vector);</b>
+<i class="no-highlight">16</i>&nbsp;    }
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    private static List&lt;Map&lt;String, Double&gt;&gt; getTFIDFVectors(List&lt;String&gt; documents) {
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        List&lt;Map&lt;String, Double&gt;&gt; tfidfVectors = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;        // Step 1: Calculate the term frequency (TF) for each document
+<b class="fc"><i class="no-highlight">22</i>&nbsp;        List&lt;Map&lt;String, Integer&gt;&gt; termFrequencyVectors = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        for (String document : documents) {</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;            termFrequencyVectors.add(getTermFrequencyVector(document));</b>
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        }</b>
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;        // Step 2: Calculate the inverse document frequency (IDF) for each term
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        Map&lt;String, Double&gt; inverseDocumentFrequencyVector = getInverseDocumentFrequencyVector(termFrequencyVectors);</b>
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;        // Step 3: Calculate the TF-IDF vector for each document
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        for (Map&lt;String, Integer&gt; termFrequencyVector : termFrequencyVectors) {</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;            Map&lt;String, Double&gt; tfidfVector = new HashMap&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;            for (Map.Entry&lt;String, Integer&gt; entry : termFrequencyVector.entrySet()) {</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;                String term = entry.getKey();</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;                int frequency = entry.getValue();</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;                double tfidf = frequency * inverseDocumentFrequencyVector.get(term);</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;                tfidfVector.put(term, tfidf);</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;            tfidfVectors.add(tfidfVector);</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;        }</b>
+<i class="no-highlight">41</i>&nbsp;
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        return tfidfVectors;</b>
+<i class="no-highlight">43</i>&nbsp;    }
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;    private static Map&lt;String, Integer&gt; getTermFrequencyVector(String document) {
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        Map&lt;String, Integer&gt; termFrequencyVector = new HashMap&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        String[] terms = document.split(&quot; &quot;);</b>
+<b class="fc"><i class="no-highlight">48</i>&nbsp;        for (String term : terms) {</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;            termFrequencyVector.put(term, termFrequencyVector.getOrDefault(term, 0) + 1);</b>
+<i class="no-highlight">50</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        return termFrequencyVector;</b>
+<i class="no-highlight">52</i>&nbsp;    }
+<i class="no-highlight">53</i>&nbsp;
+<i class="no-highlight">54</i>&nbsp;    private static Map&lt;String, Double&gt; getInverseDocumentFrequencyVector(List&lt;Map&lt;String, Integer&gt;&gt; termFrequencyVectors) {
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        Map&lt;String, Double&gt; inverseDocumentFrequencyVector = new HashMap&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        int numDocuments = termFrequencyVectors.size();</b>
+<i class="no-highlight">57</i>&nbsp;
+<b class="fc"><i class="no-highlight">58</i>&nbsp;        for (Map&lt;String, Integer&gt; termFrequencyVector : termFrequencyVectors) {</b>
+<b class="fc"><i class="no-highlight">59</i>&nbsp;            for (String term : termFrequencyVector.keySet()) {</b>
+<b class="fc"><i class="no-highlight">60</i>&nbsp;                inverseDocumentFrequencyVector.put(term, inverseDocumentFrequencyVector.getOrDefault(term, 0.0) + 1.0);</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;        }</b>
+<i class="no-highlight">63</i>&nbsp;
+<b class="fc"><i class="no-highlight">64</i>&nbsp;        for (String term : inverseDocumentFrequencyVector.keySet()) {</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;            double idf = Math.log(numDocuments / (1.0 + inverseDocumentFrequencyVector.get(term)));</b>
+<b class="fc"><i class="no-highlight">66</i>&nbsp;            inverseDocumentFrequencyVector.put(term, idf);</b>
+<b class="fc"><i class="no-highlight">67</i>&nbsp;        }</b>
+<i class="no-highlight">68</i>&nbsp;
+<b class="fc"><i class="no-highlight">69</i>&nbsp;        return inverseDocumentFrequencyVector;</b>
+<i class="no-highlight">70</i>&nbsp;    }
+<i class="no-highlight">71</i>&nbsp;
+<i class="no-highlight">72</i>&nbsp;    private static double calculateCosineSimilarity(Map&lt;String, Double&gt; vector1, Map&lt;String, Double&gt; vector2) {
+<b class="fc"><i class="no-highlight">73</i>&nbsp;        double dotProduct = 0;</b>
+<b class="fc"><i class="no-highlight">74</i>&nbsp;        double magnitude1 = 0;</b>
+<b class="fc"><i class="no-highlight">75</i>&nbsp;        double magnitude2 = 0;</b>
+<i class="no-highlight">76</i>&nbsp;
+<i class="no-highlight">77</i>&nbsp;        // Calculate the dot product and magnitudes of the vectors
+<b class="fc"><i class="no-highlight">78</i>&nbsp;        for (String term : vector1.keySet()) {</b>
+<b class="fc"><i class="no-highlight">79</i>&nbsp;            double value1 = vector1.get(term);</b>
+<b class="fc"><i class="no-highlight">80</i>&nbsp;            double value2 = vector2.getOrDefault(term, 0.0);</b>
+<i class="no-highlight">81</i>&nbsp;
+<b class="fc"><i class="no-highlight">82</i>&nbsp;            dotProduct += value1 * value2;</b>
+<b class="fc"><i class="no-highlight">83</i>&nbsp;            magnitude1 += value1 * value1;</b>
+<b class="fc"><i class="no-highlight">84</i>&nbsp;        }</b>
+<i class="no-highlight">85</i>&nbsp;
+<b class="fc"><i class="no-highlight">86</i>&nbsp;        for (String term : vector2.keySet()) {</b>
+<b class="fc"><i class="no-highlight">87</i>&nbsp;            double value2 = vector2.get(term);</b>
+<b class="fc"><i class="no-highlight">88</i>&nbsp;            magnitude2 += value2 * value2;</b>
+<b class="fc"><i class="no-highlight">89</i>&nbsp;        }</b>
+<i class="no-highlight">90</i>&nbsp;
+<i class="no-highlight">91</i>&nbsp;        // Calculate the cosine similarity score
+<b class="fc"><i class="no-highlight">92</i>&nbsp;        double denominator = Math.sqrt(magnitude1) * Math.sqrt(magnitude2);</b>
+<b class="fc"><i class="no-highlight">93</i>&nbsp;        if (denominator == 0) {</b>
+<b class="fc"><i class="no-highlight">94</i>&nbsp;            return 0;</b>
+<i class="no-highlight">95</i>&nbsp;        } else {
+<b class="nc"><i class="no-highlight">96</i>&nbsp;            return dotProduct / denominator;</b>
+<i class="no-highlight">97</i>&nbsp;        }
+<i class="no-highlight">98</i>&nbsp;    }
+<i class="no-highlight">99</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-14 17:40</div>
+</div>
+</body>
+</html>

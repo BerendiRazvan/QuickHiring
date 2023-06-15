@@ -1,0 +1,58 @@
+.date-picker {
+    -fx-border-width: 2;
+    -fx-border-radius: 12.5;
+    -fx-border-color: #2d3367;
+    -fx-background-color: transparent;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-alignment: bottom-left;
+}
+
+.date-picker .overlay {
+    -fx-border-radius: 12.5;
+    -fx-background-radius: 12.5;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow {
+    -fx-background-color: #2d3367;
+    -fx-padding: 5;
+    -fx-border-radius: 12.5;
+    -fx-background-radius: 12.5;
+    -fx-border-color: transparent;
+}
+
+.date-picker .popup-button {
+    -fx-background-color: #2d3367;
+    -fx-border-radius: 12.5;
+    -fx-background-radius: 12.5;
+}
+
+.date-picker .popup-content {
+    -fx-padding: 5;
+    -fx-background-color: white;
+    -fx-border-radius: 12.5;
+    -fx-background-radius: 12.5;
+}
+
+.date-picker .date-picker-content > .text-field {
+    -fx-border-radius: 12.5;
+    -fx-background-radius: 12.5;
+}
+
+.date-picker > .text-field {
+    -fx-border-radius: 12.5;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-alignment: bottom-left;
+}
+
+.date-picker > .arrow-button {
+    -fx-border-radius: 12.5;
+    -fx-background-radius: 12.5;
+}

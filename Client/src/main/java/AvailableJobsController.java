@@ -173,7 +173,7 @@ public class AvailableJobsController extends UnicastRemoteObject implements Init
             }
         });
 
-        stage.setTitle("Quick Hiring - Home - " + currentUser.getMail());
+        stage.setTitle("QuickHiring - Home - " + currentUser.getMail());
     }
 
 

@@ -1,6 +1,7 @@
 
 import domain.ImageData;
 import domain.Job;
+import domain.Resume;
 import domain.User;
 import enums.AccountType;
 import javafx.collections.FXCollections;
@@ -92,7 +93,7 @@ public class HomeController extends UnicastRemoteObject implements Initializable
 
                 if (item != null) {
                     if (loggedUser.getAccountType() == AccountType.RECRUITER)
-                        setText(item.toString() + server.getApplicantsNumber(item.getId()));
+                        setText(item.toString() +" - Applicants: "+ server.getApplicantsNumber(item.getId()));
                     else
                         setText(item.toString());
                 }
@@ -138,8 +139,7 @@ public class HomeController extends UnicastRemoteObject implements Initializable
         manageJobsButton.setVisible(false);
         jobsLabel.setText("Best jobs recommendations for you");
         try {
-            jobModelList.setAll(server.findBestJobs(5, server.getUserResume(loggedUser.getId())));
-            jobsList.setItems(jobModelList);
+            setRecommendations();
             jobsList.getSelectionModel().selectedItemProperty().addListener(o -> {
                 Job selectedJob = jobsList.getSelectionModel().getSelectedItem();
                 if (selectedJob != null) {
@@ -157,6 +157,12 @@ public class HomeController extends UnicastRemoteObject implements Initializable
         } catch (ServiceException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setRecommendations() throws ServiceException {
+        Resume userResume = server.getUserResume(loggedUser.getId());
+        jobModelList.setAll(server.findBestJobs(5, userResume));
+        jobsList.setItems(jobModelList);
     }
 
     private void initRecruiterPage() {
@@ -180,7 +186,7 @@ public class HomeController extends UnicastRemoteObject implements Initializable
         try {
             setAddOrModifyAccountController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - Edit account");
+            stage.setTitle("QuickHiring - Edit account");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -198,7 +204,7 @@ public class HomeController extends UnicastRemoteObject implements Initializable
         try {
             setAvailableJobsController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - Jobs available");
+            stage.setTitle("QuickHiring - Jobs available");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -233,7 +239,7 @@ public class HomeController extends UnicastRemoteObject implements Initializable
         try {
             setJobsAppliedController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - My applications");
+            stage.setTitle("QuickHiring - My applications");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -251,7 +257,7 @@ public class HomeController extends UnicastRemoteObject implements Initializable
         try {
             setManageJobsController();
             openNextView(event);
-            stage.setTitle("Quick Hiring - Manage jobs");
+            stage.setTitle("QuickHiring - Manage jobs");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

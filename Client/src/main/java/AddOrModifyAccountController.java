@@ -515,7 +515,7 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
             }
         });
 
-        stage.setTitle("Quick Hiring - Home - " + currentUser.getMail());
+        stage.setTitle("QuickHiring - Home - " + currentUser.getMail());
     }
 
     private void setLoginController() throws IOException {
@@ -536,6 +536,6 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
             }
         });
 
-        stage.setTitle("Quick Hiring - Login");
+        stage.setTitle("QuickHiring - Login");
     }
 }

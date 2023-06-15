@@ -1,0 +1,17 @@
+#paneLogin {
+    -fx-background-color: white;
+}
+
+#paneMain {
+    -fx-background-color: linear-gradient(to right, #d1ffd6, rgba(209, 255, 214, 0)),
+    radial-gradient(focus-angle 45deg, radius 90%, #ffd6b8, rgba(255, 214, 184, 0));
+    -fx-background-blend-mode: screen;
+}
+
+#profileCard {
+    -fx-background-color: white;
+    -fx-background-radius: 12.5;
+    -fx-border-radius: 12.5;
+    -fx-border-width: 2.5;
+    -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #ef8329, #11a626);
+}

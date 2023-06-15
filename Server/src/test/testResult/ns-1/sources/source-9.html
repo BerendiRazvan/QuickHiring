@@ -1,0 +1,553 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ManageSelectionProcessController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: ManageSelectionProcessController (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ManageSelectionProcessController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/160)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ManageSelectionProcessController$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ManageSelectionProcessController$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/22)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/27)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/188)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;import domain.ApplicationForJob;
+<i class="no-highlight">2</i>&nbsp;import domain.ImageData;
+<i class="no-highlight">3</i>&nbsp;import domain.Job;
+<i class="no-highlight">4</i>&nbsp;import domain.User;
+<i class="no-highlight">5</i>&nbsp;import enums.ApplicationStatus;
+<i class="no-highlight">6</i>&nbsp;import javafx.collections.FXCollections;
+<i class="no-highlight">7</i>&nbsp;import javafx.collections.ObservableList;
+<i class="no-highlight">8</i>&nbsp;import javafx.event.ActionEvent;
+<i class="no-highlight">9</i>&nbsp;import javafx.event.EventHandler;
+<i class="no-highlight">10</i>&nbsp;import javafx.fxml.FXML;
+<i class="no-highlight">11</i>&nbsp;import javafx.fxml.FXMLLoader;
+<i class="no-highlight">12</i>&nbsp;import javafx.fxml.Initializable;
+<i class="no-highlight">13</i>&nbsp;import javafx.scene.Parent;
+<i class="no-highlight">14</i>&nbsp;import javafx.scene.Scene;
+<i class="no-highlight">15</i>&nbsp;import javafx.scene.control.*;
+<i class="no-highlight">16</i>&nbsp;import javafx.scene.image.*;
+<i class="no-highlight">17</i>&nbsp;import javafx.stage.Stage;
+<i class="no-highlight">18</i>&nbsp;import javafx.stage.WindowEvent;
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">21</i>&nbsp;import java.io.Serializable;
+<i class="no-highlight">22</i>&nbsp;import java.math.RoundingMode;
+<i class="no-highlight">23</i>&nbsp;import java.net.URL;
+<i class="no-highlight">24</i>&nbsp;import java.rmi.RemoteException;
+<i class="no-highlight">25</i>&nbsp;import java.rmi.server.UnicastRemoteObject;
+<i class="no-highlight">26</i>&nbsp;import java.text.DecimalFormat;
+<i class="no-highlight">27</i>&nbsp;import java.util.ResourceBundle;
+<i class="no-highlight">28</i>&nbsp;import java.util.stream.Collectors;
+<i class="no-highlight">29</i>&nbsp;import java.util.stream.Stream;
+<i class="no-highlight">30</i>&nbsp;
+<b class="nc"><i class="no-highlight">31</i>&nbsp;public class ManageSelectionProcessController extends UnicastRemoteObject implements Initializable, IObserver, Serializable {</b>
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;    private IService server;
+<i class="no-highlight">34</i>&nbsp;    private Parent parentRoot;
+<i class="no-highlight">35</i>&nbsp;    private Stage stage;
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    private User loggedUser;
+<i class="no-highlight">38</i>&nbsp;    private Job selectedJob;
+<i class="no-highlight">39</i>&nbsp;    private Image imageProfile;
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;    private ManageJobsController manageJobsController;
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    private ApplicationForJob lastApplicationSelected;
+<i class="no-highlight">44</i>&nbsp;
+<b class="nc"><i class="no-highlight">45</i>&nbsp;    ObservableList&lt;ApplicationForJob&gt; applicationAppliedModelList = FXCollections.observableArrayList();</b>
+<b class="nc"><i class="no-highlight">46</i>&nbsp;    ObservableList&lt;ApplicationForJob&gt; applicationInReviewModelList = FXCollections.observableArrayList();</b>
+<b class="nc"><i class="no-highlight">47</i>&nbsp;    ObservableList&lt;ApplicationForJob&gt; applicationInterviewModelList = FXCollections.observableArrayList();</b>
+<b class="nc"><i class="no-highlight">48</i>&nbsp;    ObservableList&lt;ApplicationForJob&gt; applicationOfferModelList = FXCollections.observableArrayList();</b>
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    // FXML Components
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;    @FXML
+<i class="no-highlight">53</i>&nbsp;    Label jobDetailsLabel;
+<i class="no-highlight">54</i>&nbsp;
+<i class="no-highlight">55</i>&nbsp;    @FXML
+<i class="no-highlight">56</i>&nbsp;    Label candidateInfoLabel;
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    @FXML
+<i class="no-highlight">59</i>&nbsp;    Label errorLabel;
+<i class="no-highlight">60</i>&nbsp;
+<i class="no-highlight">61</i>&nbsp;    @FXML
+<i class="no-highlight">62</i>&nbsp;    ListView&lt;ApplicationForJob&gt; appliedStatusList;
+<i class="no-highlight">63</i>&nbsp;
+<i class="no-highlight">64</i>&nbsp;    @FXML
+<i class="no-highlight">65</i>&nbsp;    ListView&lt;ApplicationForJob&gt; inReviewStatusList;
+<i class="no-highlight">66</i>&nbsp;
+<i class="no-highlight">67</i>&nbsp;    @FXML
+<i class="no-highlight">68</i>&nbsp;    ListView&lt;ApplicationForJob&gt; interviewStatusList;
+<i class="no-highlight">69</i>&nbsp;
+<i class="no-highlight">70</i>&nbsp;    @FXML
+<i class="no-highlight">71</i>&nbsp;    ListView&lt;ApplicationForJob&gt; offerStatusList;
+<i class="no-highlight">72</i>&nbsp;
+<i class="no-highlight">73</i>&nbsp;    @FXML
+<i class="no-highlight">74</i>&nbsp;    TextArea stepDetailsTextArea;
+<i class="no-highlight">75</i>&nbsp;
+<i class="no-highlight">76</i>&nbsp;    @FXML
+<i class="no-highlight">77</i>&nbsp;    Button moveApplicationLButton;
+<i class="no-highlight">78</i>&nbsp;
+<i class="no-highlight">79</i>&nbsp;    @FXML
+<i class="no-highlight">80</i>&nbsp;    Button moveApplicationRButton;
+<i class="no-highlight">81</i>&nbsp;
+<i class="no-highlight">82</i>&nbsp;    @FXML
+<i class="no-highlight">83</i>&nbsp;    Button rejectButton;
+<i class="no-highlight">84</i>&nbsp;
+<i class="no-highlight">85</i>&nbsp;    @FXML
+<i class="no-highlight">86</i>&nbsp;    Button addDetailsButton;
+<i class="no-highlight">87</i>&nbsp;
+<i class="no-highlight">88</i>&nbsp;    @FXML
+<i class="no-highlight">89</i>&nbsp;    Button backViewButton;
+<i class="no-highlight">90</i>&nbsp;
+<i class="no-highlight">91</i>&nbsp;
+<i class="no-highlight">92</i>&nbsp;    @FXML
+<i class="no-highlight">93</i>&nbsp;    ImageView imageProfileView;
+<i class="no-highlight">94</i>&nbsp;
+<b class="nc"><i class="no-highlight">95</i>&nbsp;    public ManageSelectionProcessController() throws RemoteException {</b>
+<i class="no-highlight">96</i>&nbsp;
+<i class="no-highlight">97</i>&nbsp;    }
+<i class="no-highlight">98</i>&nbsp;
+<i class="no-highlight">99</i>&nbsp;    @FXML
+<i class="no-highlight">100</i>&nbsp;    public void initialize(URL location, ResourceBundle resources) {
+<b class="nc"><i class="no-highlight">101</i>&nbsp;        disableButtons();</b>
+<i class="no-highlight">102</i>&nbsp;    }
+<i class="no-highlight">103</i>&nbsp;
+<i class="no-highlight">104</i>&nbsp;    private void disableButtons() {
+<b class="nc"><i class="no-highlight">105</i>&nbsp;        addDetailsButton.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        moveApplicationLButton.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">107</i>&nbsp;        moveApplicationRButton.setDisable(true);</b>
+<b class="nc"><i class="no-highlight">108</i>&nbsp;        rejectButton.setDisable(true);</b>
+<i class="no-highlight">109</i>&nbsp;    }
+<i class="no-highlight">110</i>&nbsp;
+<i class="no-highlight">111</i>&nbsp;    private void enableButtons() {
+<b class="nc"><i class="no-highlight">112</i>&nbsp;        if (lastApplicationSelected != null) {</b>
+<b class="nc"><i class="no-highlight">113</i>&nbsp;            addDetailsButton.setDisable(false);</b>
+<b class="nc"><i class="no-highlight">114</i>&nbsp;            if (lastApplicationSelected.getApplicationStatus() != ApplicationStatus.ACCEPTED &amp;&amp;</b>
+<b class="nc"><i class="no-highlight">115</i>&nbsp;                    lastApplicationSelected.getApplicationStatus() != ApplicationStatus.REJECTED) {</b>
+<b class="nc"><i class="no-highlight">116</i>&nbsp;                if (lastApplicationSelected.getApplicationStatus() != ApplicationStatus.APPLIED)</b>
+<b class="nc"><i class="no-highlight">117</i>&nbsp;                    moveApplicationLButton.setDisable(false);</b>
+<b class="nc"><i class="no-highlight">118</i>&nbsp;                moveApplicationRButton.setDisable(false);</b>
+<b class="nc"><i class="no-highlight">119</i>&nbsp;                rejectButton.setDisable(false);</b>
+<i class="no-highlight">120</i>&nbsp;            }
+<i class="no-highlight">121</i>&nbsp;        } else {
+<b class="nc"><i class="no-highlight">122</i>&nbsp;            disableButtons();</b>
+<i class="no-highlight">123</i>&nbsp;        }
+<i class="no-highlight">124</i>&nbsp;    }
+<i class="no-highlight">125</i>&nbsp;
+<i class="no-highlight">126</i>&nbsp;    public void setServerAndStage(IService s, User user, Job job, Stage primaryStage, Parent root) {
+<b class="nc"><i class="no-highlight">127</i>&nbsp;        this.server = s;</b>
+<b class="nc"><i class="no-highlight">128</i>&nbsp;        this.stage = primaryStage;</b>
+<b class="nc"><i class="no-highlight">129</i>&nbsp;        this.parentRoot = root;</b>
+<b class="nc"><i class="no-highlight">130</i>&nbsp;        this.loggedUser = user;</b>
+<b class="nc"><i class="no-highlight">131</i>&nbsp;        this.selectedJob = job;</b>
+<i class="no-highlight">132</i>&nbsp;
+<b class="nc"><i class="no-highlight">133</i>&nbsp;        initData();</b>
+<i class="no-highlight">134</i>&nbsp;    }
+<i class="no-highlight">135</i>&nbsp;
+<i class="no-highlight">136</i>&nbsp;    private void initData() {
+<b class="nc"><i class="no-highlight">137</i>&nbsp;        jobDetailsLabel.setText(selectedJob.toString());</b>
+<i class="no-highlight">138</i>&nbsp;
+<b class="nc"><i class="no-highlight">139</i>&nbsp;        uploadData();</b>
+<b class="nc"><i class="no-highlight">140</i>&nbsp;        setListListeners();</b>
+<i class="no-highlight">141</i>&nbsp;
+<i class="no-highlight">142</i>&nbsp;    }
+<i class="no-highlight">143</i>&nbsp;
+<i class="no-highlight">144</i>&nbsp;    private void setListListeners() {
+<b class="nc"><i class="no-highlight">145</i>&nbsp;        appliedStatusList.getSelectionModel().selectedItemProperty().addListener(o -&gt; {</b>
+<b class="nc"><i class="no-highlight">146</i>&nbsp;            lastApplicationSelected = appliedStatusList.getSelectionModel().getSelectedItem();</b>
+<b class="nc"><i class="no-highlight">147</i>&nbsp;            displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">148</i>&nbsp;            inReviewStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">149</i>&nbsp;            interviewStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">150</i>&nbsp;            offerStatusList.getSelectionModel().clearSelection();</b>
+<i class="no-highlight">151</i>&nbsp;        });
+<i class="no-highlight">152</i>&nbsp;
+<b class="nc"><i class="no-highlight">153</i>&nbsp;        inReviewStatusList.getSelectionModel().selectedItemProperty().addListener(o -&gt; {</b>
+<b class="nc"><i class="no-highlight">154</i>&nbsp;            lastApplicationSelected = inReviewStatusList.getSelectionModel().getSelectedItem();</b>
+<b class="nc"><i class="no-highlight">155</i>&nbsp;            displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">156</i>&nbsp;            appliedStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">157</i>&nbsp;            interviewStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">158</i>&nbsp;            offerStatusList.getSelectionModel().clearSelection();</b>
+<i class="no-highlight">159</i>&nbsp;        });
+<i class="no-highlight">160</i>&nbsp;
+<b class="nc"><i class="no-highlight">161</i>&nbsp;        interviewStatusList.getSelectionModel().selectedItemProperty().addListener(o -&gt; {</b>
+<b class="nc"><i class="no-highlight">162</i>&nbsp;            lastApplicationSelected = interviewStatusList.getSelectionModel().getSelectedItem();</b>
+<b class="nc"><i class="no-highlight">163</i>&nbsp;            displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">164</i>&nbsp;            appliedStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">165</i>&nbsp;            inReviewStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">166</i>&nbsp;            offerStatusList.getSelectionModel().clearSelection();</b>
+<i class="no-highlight">167</i>&nbsp;        });
+<i class="no-highlight">168</i>&nbsp;
+<b class="nc"><i class="no-highlight">169</i>&nbsp;        offerStatusList.getSelectionModel().selectedItemProperty().addListener(o -&gt; {</b>
+<b class="nc"><i class="no-highlight">170</i>&nbsp;            lastApplicationSelected = offerStatusList.getSelectionModel().getSelectedItem();</b>
+<b class="nc"><i class="no-highlight">171</i>&nbsp;            displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">172</i>&nbsp;            appliedStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">173</i>&nbsp;            inReviewStatusList.getSelectionModel().clearSelection();</b>
+<b class="nc"><i class="no-highlight">174</i>&nbsp;            interviewStatusList.getSelectionModel().clearSelection();</b>
+<i class="no-highlight">175</i>&nbsp;        });
+<i class="no-highlight">176</i>&nbsp;
+<i class="no-highlight">177</i>&nbsp;    }
+<i class="no-highlight">178</i>&nbsp;
+<i class="no-highlight">179</i>&nbsp;    private void displayApplicationInfo(ApplicationForJob application) {
+<b class="nc"><i class="no-highlight">180</i>&nbsp;        if (application != null) {</b>
+<b class="nc"><i class="no-highlight">181</i>&nbsp;            enableButtons();</b>
+<i class="no-highlight">182</i>&nbsp;
+<b class="nc"><i class="no-highlight">183</i>&nbsp;            User candidate = application.getCandidateResume().getOwner();</b>
+<b class="nc"><i class="no-highlight">184</i>&nbsp;            candidateInfoLabel.setText(candidate.getFirstName() + &quot; &quot; + candidate.getLastName() + &quot;\n\n&quot; +</b>
+<i class="no-highlight">185</i>&nbsp;                    &quot;Contact data\n&quot; +
+<b class="nc"><i class="no-highlight">186</i>&nbsp;                    &quot;Mail: &quot; + candidate.getMail() + &quot;\n&quot; +</b>
+<b class="nc"><i class="no-highlight">187</i>&nbsp;                    &quot;Phone number: &quot; + candidate.getPhoneNumber() + &quot;\n\n\n&quot; +</b>
+<i class="no-highlight">188</i>&nbsp;                    &quot;Application details:\n\n&quot; +
+<b class="nc"><i class="no-highlight">189</i>&nbsp;                    application.getApplicationDetails());</b>
+<i class="no-highlight">190</i>&nbsp;
+<i class="no-highlight">191</i>&nbsp;            // plus incarcare imagine profil mai incolo
+<i class="no-highlight">192</i>&nbsp;
+<b class="nc"><i class="no-highlight">193</i>&nbsp;            imageProfile = getProfileImage(candidate);</b>
+<b class="nc"><i class="no-highlight">194</i>&nbsp;            imageProfileView.setImage(imageProfile);</b>
+<i class="no-highlight">195</i>&nbsp;
+<b class="nc"><i class="no-highlight">196</i>&nbsp;        } else {</b>
+<b class="nc"><i class="no-highlight">197</i>&nbsp;            candidateInfoLabel.setText(&quot;&quot;);</b>
+<i class="no-highlight">198</i>&nbsp;        }
+<i class="no-highlight">199</i>&nbsp;    }
+<i class="no-highlight">200</i>&nbsp;
+<i class="no-highlight">201</i>&nbsp;    private Image getProfileImage(User candidate) {
+<b class="nc"><i class="no-highlight">202</i>&nbsp;        ImageData dataImageBD = null;</b>
+<b class="nc"><i class="no-highlight">203</i>&nbsp;        if (candidate != null) {</b>
+<b class="nc"><i class="no-highlight">204</i>&nbsp;            dataImageBD = candidate.getProfileImage();</b>
+<i class="no-highlight">205</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">206</i>&nbsp;        if (dataImageBD == null)</b>
+<b class="nc"><i class="no-highlight">207</i>&nbsp;            dataImageBD = server.getProfileImage(1L);</b>
+<i class="no-highlight">208</i>&nbsp;
+<b class="nc"><i class="no-highlight">209</i>&nbsp;        int width = dataImageBD.getWidth();</b>
+<b class="nc"><i class="no-highlight">210</i>&nbsp;        int height = dataImageBD.getHeight();</b>
+<i class="no-highlight">211</i>&nbsp;
+<b class="nc"><i class="no-highlight">212</i>&nbsp;        WritableImage writableImage = new WritableImage(width, height);</b>
+<b class="nc"><i class="no-highlight">213</i>&nbsp;        PixelWriter pixelWriter = writableImage.getPixelWriter();</b>
+<b class="nc"><i class="no-highlight">214</i>&nbsp;        pixelWriter.setPixels(0, 0, width, height, PixelFormat.getByteBgraInstance(), dataImageBD.getImageData(), 0, height * 4);</b>
+<i class="no-highlight">215</i>&nbsp;
+<b class="nc"><i class="no-highlight">216</i>&nbsp;        return writableImage;</b>
+<i class="no-highlight">217</i>&nbsp;    }
+<i class="no-highlight">218</i>&nbsp;
+<i class="no-highlight">219</i>&nbsp;    @FXML
+<i class="no-highlight">220</i>&nbsp;    protected void onActionBackView(ActionEvent event) {
+<i class="no-highlight">221</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">222</i>&nbsp;            setManageJobsController();</b>
+<b class="nc"><i class="no-highlight">223</i>&nbsp;            openNextView(event);</b>
+<b class="nc"><i class="no-highlight">224</i>&nbsp;            stage.setTitle(&quot;Quick Hiring - Manage jobs&quot;);</b>
+<b class="nc"><i class="no-highlight">225</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">226</i>&nbsp;            System.out.println(e.getMessage());</b>
+<b class="nc"><i class="no-highlight">227</i>&nbsp;        }</b>
+<i class="no-highlight">228</i>&nbsp;    }
+<i class="no-highlight">229</i>&nbsp;
+<i class="no-highlight">230</i>&nbsp;    @FXML
+<i class="no-highlight">231</i>&nbsp;    protected void onActionMoveLeftApplication(ActionEvent event) {
+<b class="nc"><i class="no-highlight">232</i>&nbsp;        boolean errors = false;</b>
+<i class="no-highlight">233</i>&nbsp;
+<b class="nc"><i class="no-highlight">234</i>&nbsp;        if (stepDetailsTextArea.getText().isEmpty()) {</b>
+<b class="nc"><i class="no-highlight">235</i>&nbsp;            errors = true;</b>
+<b class="nc"><i class="no-highlight">236</i>&nbsp;            errorLabel.setText(&quot;Next step details is empty\nPlease provide information for candidate about the next step&quot;);</b>
+<i class="no-highlight">237</i>&nbsp;        }
+<i class="no-highlight">238</i>&nbsp;
+<b class="nc"><i class="no-highlight">239</i>&nbsp;        if (lastApplicationSelected != null &amp;&amp; !errors) {</b>
+<i class="no-highlight">240</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">241</i>&nbsp;                server.moveApplicationBackward(lastApplicationSelected, stepDetailsTextArea.getText());</b>
+<b class="nc"><i class="no-highlight">242</i>&nbsp;                disableButtons();</b>
+<b class="nc"><i class="no-highlight">243</i>&nbsp;                uploadData();</b>
+<b class="nc"><i class="no-highlight">244</i>&nbsp;                displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">245</i>&nbsp;                errorLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">246</i>&nbsp;                stepDetailsTextArea.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">247</i>&nbsp;            } catch (ServiceException e) {</b>
+<b class="nc"><i class="no-highlight">248</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">249</i>&nbsp;            }</b>
+<i class="no-highlight">250</i>&nbsp;        }
+<i class="no-highlight">251</i>&nbsp;    }
+<i class="no-highlight">252</i>&nbsp;
+<i class="no-highlight">253</i>&nbsp;    @FXML
+<i class="no-highlight">254</i>&nbsp;    protected void onActionMoveRightApplication(ActionEvent event) {
+<b class="nc"><i class="no-highlight">255</i>&nbsp;        boolean errors = false;</b>
+<i class="no-highlight">256</i>&nbsp;
+<b class="nc"><i class="no-highlight">257</i>&nbsp;        if (stepDetailsTextArea.getText().isEmpty()) {</b>
+<b class="nc"><i class="no-highlight">258</i>&nbsp;            errors = true;</b>
+<b class="nc"><i class="no-highlight">259</i>&nbsp;            errorLabel.setText(&quot;Next step details is empty\nPlease provide information for candidate about the next step&quot;);</b>
+<i class="no-highlight">260</i>&nbsp;        }
+<i class="no-highlight">261</i>&nbsp;
+<b class="nc"><i class="no-highlight">262</i>&nbsp;        if (lastApplicationSelected != null &amp;&amp; !errors) {</b>
+<i class="no-highlight">263</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">264</i>&nbsp;                server.moveApplicationForward(lastApplicationSelected, stepDetailsTextArea.getText());</b>
+<b class="nc"><i class="no-highlight">265</i>&nbsp;                disableButtons();</b>
+<b class="nc"><i class="no-highlight">266</i>&nbsp;                uploadData();</b>
+<b class="nc"><i class="no-highlight">267</i>&nbsp;                displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">268</i>&nbsp;                errorLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">269</i>&nbsp;                stepDetailsTextArea.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">270</i>&nbsp;            } catch (ServiceException e) {</b>
+<b class="nc"><i class="no-highlight">271</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">272</i>&nbsp;            }</b>
+<i class="no-highlight">273</i>&nbsp;        }
+<i class="no-highlight">274</i>&nbsp;    }
+<i class="no-highlight">275</i>&nbsp;
+<i class="no-highlight">276</i>&nbsp;    @FXML
+<i class="no-highlight">277</i>&nbsp;    protected void onActionRejectCandidate(ActionEvent event) {
+<b class="nc"><i class="no-highlight">278</i>&nbsp;        boolean errors = false;</b>
+<i class="no-highlight">279</i>&nbsp;
+<b class="nc"><i class="no-highlight">280</i>&nbsp;        if (stepDetailsTextArea.getText().isEmpty()) {</b>
+<b class="nc"><i class="no-highlight">281</i>&nbsp;            errors = true;</b>
+<b class="nc"><i class="no-highlight">282</i>&nbsp;            errorLabel.setText(&quot;Next step details is empty\nPlease provide information for candidate about the next step&quot;);</b>
+<i class="no-highlight">283</i>&nbsp;        }
+<i class="no-highlight">284</i>&nbsp;
+<b class="nc"><i class="no-highlight">285</i>&nbsp;        if (lastApplicationSelected != null &amp;&amp; !errors) {</b>
+<i class="no-highlight">286</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">287</i>&nbsp;                server.modifyApplicationStatus(lastApplicationSelected, ApplicationStatus.REJECTED, stepDetailsTextArea.getText());</b>
+<b class="nc"><i class="no-highlight">288</i>&nbsp;                disableButtons();</b>
+<b class="nc"><i class="no-highlight">289</i>&nbsp;                uploadData();</b>
+<b class="nc"><i class="no-highlight">290</i>&nbsp;                displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">291</i>&nbsp;                errorLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">292</i>&nbsp;                stepDetailsTextArea.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">293</i>&nbsp;            } catch (ServiceException e) {</b>
+<b class="nc"><i class="no-highlight">294</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">295</i>&nbsp;            }</b>
+<i class="no-highlight">296</i>&nbsp;        }
+<i class="no-highlight">297</i>&nbsp;    }
+<i class="no-highlight">298</i>&nbsp;
+<i class="no-highlight">299</i>&nbsp;    @FXML
+<i class="no-highlight">300</i>&nbsp;    protected void onActionAddDetails(ActionEvent event) {
+<b class="nc"><i class="no-highlight">301</i>&nbsp;        boolean errors = false;</b>
+<b class="nc"><i class="no-highlight">302</i>&nbsp;        if (stepDetailsTextArea.getText().isEmpty()) {</b>
+<b class="nc"><i class="no-highlight">303</i>&nbsp;            errors = true;</b>
+<b class="nc"><i class="no-highlight">304</i>&nbsp;            errorLabel.setText(&quot;Next step details is empty\nPlease provide information for candidate about the next step&quot;);</b>
+<i class="no-highlight">305</i>&nbsp;        }
+<i class="no-highlight">306</i>&nbsp;
+<b class="nc"><i class="no-highlight">307</i>&nbsp;        if (lastApplicationSelected != null &amp;&amp; !errors) {</b>
+<i class="no-highlight">308</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">309</i>&nbsp;                server.modifyApplicationStatus(lastApplicationSelected, lastApplicationSelected.getApplicationStatus(), stepDetailsTextArea.getText());</b>
+<b class="nc"><i class="no-highlight">310</i>&nbsp;                disableButtons();</b>
+<b class="nc"><i class="no-highlight">311</i>&nbsp;                uploadData();</b>
+<b class="nc"><i class="no-highlight">312</i>&nbsp;                displayApplicationInfo(lastApplicationSelected);</b>
+<b class="nc"><i class="no-highlight">313</i>&nbsp;                errorLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">314</i>&nbsp;                stepDetailsTextArea.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">315</i>&nbsp;            } catch (ServiceException e) {</b>
+<b class="nc"><i class="no-highlight">316</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">317</i>&nbsp;            }</b>
+<i class="no-highlight">318</i>&nbsp;        }
+<i class="no-highlight">319</i>&nbsp;    }
+<i class="no-highlight">320</i>&nbsp;
+<i class="no-highlight">321</i>&nbsp;
+<i class="no-highlight">322</i>&nbsp;    private void setManageJobsController() throws IOException {
+<b class="nc"><i class="no-highlight">323</i>&nbsp;        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(&quot;views/manage-jobs-view.fxml&quot;));</b>
+<b class="nc"><i class="no-highlight">324</i>&nbsp;        parentRoot = fxmlLoader.load();</b>
+<b class="nc"><i class="no-highlight">325</i>&nbsp;        manageJobsController = fxmlLoader.&lt;ManageJobsController&gt;getController();</b>
+<b class="nc"><i class="no-highlight">326</i>&nbsp;        manageJobsController.setServerAndStage(server, loggedUser, stage, parentRoot);</b>
+<i class="no-highlight">327</i>&nbsp;    }
+<i class="no-highlight">328</i>&nbsp;
+<i class="no-highlight">329</i>&nbsp;    private void openNextView(ActionEvent event) {
+<b class="nc"><i class="no-highlight">330</i>&nbsp;        stage.setScene(new Scene(parentRoot));</b>
+<i class="no-highlight">331</i>&nbsp;
+<b class="nc"><i class="no-highlight">332</i>&nbsp;        stage.setOnCloseRequest(new EventHandler&lt;WindowEvent&gt;() {</b>
+<i class="no-highlight">333</i>&nbsp;            @Override
+<i class="no-highlight">334</i>&nbsp;            public void handle(WindowEvent event) {
+<i class="no-highlight">335</i>&nbsp;                try {
+<b class="nc"><i class="no-highlight">336</i>&nbsp;                    server.logout(loggedUser);</b>
+<b class="nc"><i class="no-highlight">337</i>&nbsp;                } catch (ServiceException exception) {</b>
+<b class="nc"><i class="no-highlight">338</i>&nbsp;                    exception.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">339</i>&nbsp;                }</b>
+<b class="nc"><i class="no-highlight">340</i>&nbsp;                System.exit(0);</b>
+<i class="no-highlight">341</i>&nbsp;            }
+<i class="no-highlight">342</i>&nbsp;        });
+<i class="no-highlight">343</i>&nbsp;    }
+<i class="no-highlight">344</i>&nbsp;
+<i class="no-highlight">345</i>&nbsp;    private void uploadData() {
+<b class="nc"><i class="no-highlight">346</i>&nbsp;        applicationAppliedModelList.setAll(server.findAllApplicationsForJob(selectedJob, ApplicationStatus.APPLIED));</b>
+<b class="nc"><i class="no-highlight">347</i>&nbsp;        appliedStatusList.setItems(applicationAppliedModelList);</b>
+<i class="no-highlight">348</i>&nbsp;
+<b class="nc"><i class="no-highlight">349</i>&nbsp;        applicationInReviewModelList.setAll(server.findAllApplicationsForJob(selectedJob, ApplicationStatus.IN_REVIEW));</b>
+<b class="nc"><i class="no-highlight">350</i>&nbsp;        inReviewStatusList.setItems(applicationInReviewModelList);</b>
+<i class="no-highlight">351</i>&nbsp;
+<b class="nc"><i class="no-highlight">352</i>&nbsp;        applicationInterviewModelList.setAll(server.findAllApplicationsForJob(selectedJob, ApplicationStatus.INTERVIEW));</b>
+<b class="nc"><i class="no-highlight">353</i>&nbsp;        interviewStatusList.setItems(applicationInterviewModelList);</b>
+<i class="no-highlight">354</i>&nbsp;
+<b class="nc"><i class="no-highlight">355</i>&nbsp;        applicationOfferModelList.setAll(</b>
+<b class="nc"><i class="no-highlight">356</i>&nbsp;                Stream.concat(</b>
+<b class="nc"><i class="no-highlight">357</i>&nbsp;                        server.findAllApplicationsForJob(selectedJob, ApplicationStatus.ACCEPTED).stream(),</b>
+<b class="nc"><i class="no-highlight">358</i>&nbsp;                        server.findAllApplicationsForJob(selectedJob, ApplicationStatus.REJECTED).stream()</b>
+<b class="nc"><i class="no-highlight">359</i>&nbsp;                ).collect(Collectors.toList()));</b>
+<b class="nc"><i class="no-highlight">360</i>&nbsp;        offerStatusList.setItems(applicationOfferModelList);</b>
+<i class="no-highlight">361</i>&nbsp;
+<b class="nc"><i class="no-highlight">362</i>&nbsp;        setCellFactoryForList(appliedStatusList);</b>
+<b class="nc"><i class="no-highlight">363</i>&nbsp;        setCellFactoryForList(inReviewStatusList);</b>
+<b class="nc"><i class="no-highlight">364</i>&nbsp;        setCellFactoryForList(interviewStatusList);</b>
+<b class="nc"><i class="no-highlight">365</i>&nbsp;        setCellFactoryForList(offerStatusList);</b>
+<i class="no-highlight">366</i>&nbsp;    }
+<i class="no-highlight">367</i>&nbsp;
+<i class="no-highlight">368</i>&nbsp;    private void setCellFactoryForList(ListView&lt;ApplicationForJob&gt; listView) {
+<b class="nc"><i class="no-highlight">369</i>&nbsp;        listView.setCellFactory(r -&gt; new ListCell&lt;ApplicationForJob&gt;() {</b>
+<i class="no-highlight">370</i>&nbsp;            @Override
+<i class="no-highlight">371</i>&nbsp;            public void updateItem(ApplicationForJob item, boolean empty) {
+<b class="nc"><i class="no-highlight">372</i>&nbsp;                super.updateItem(item, empty);</b>
+<b class="nc"><i class="no-highlight">373</i>&nbsp;                if (item == null) {</b>
+<b class="nc"><i class="no-highlight">374</i>&nbsp;                    setText(null);</b>
+<i class="no-highlight">375</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">376</i>&nbsp;                    User candidate = item.getCandidateResume().getOwner();</b>
+<b class="nc"><i class="no-highlight">377</i>&nbsp;                    double matchingValue = server.getResumeJobMatchingScore(item.getCandidateResume(), item.getJobApplied()) * 100;</b>
+<b class="nc"><i class="no-highlight">378</i>&nbsp;                    DecimalFormat df = new DecimalFormat(&quot;#.##&quot;);</b>
+<b class="nc"><i class="no-highlight">379</i>&nbsp;                    df.setRoundingMode(RoundingMode.DOWN);</b>
+<b class="nc"><i class="no-highlight">380</i>&nbsp;                    String formattedValue = df.format(matchingValue);</b>
+<b class="nc"><i class="no-highlight">381</i>&nbsp;                    setText(candidate.getFirstName() + &quot; &quot; + candidate.getLastName() + &quot; - &quot; +</b>
+<i class="no-highlight">382</i>&nbsp;                            formattedValue + &quot;%&quot;);
+<i class="no-highlight">383</i>&nbsp;
+<b class="nc"><i class="no-highlight">384</i>&nbsp;                    super.updateItem(item, empty);</b>
+<b class="nc"><i class="no-highlight">385</i>&nbsp;                    if (item == null) {</b>
+<b class="nc"><i class="no-highlight">386</i>&nbsp;                        setStyle(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">387</i>&nbsp;                    } else if (item.getApplicationStatus() == ApplicationStatus.REJECTED) {</b>
+<b class="nc"><i class="no-highlight">388</i>&nbsp;                        setText(item.toString());</b>
+<b class="nc"><i class="no-highlight">389</i>&nbsp;                        setGraphic(null);</b>
+<b class="nc"><i class="no-highlight">390</i>&nbsp;                        setStyle(&quot;-fx-background-color: #ffcfc2;&quot;);</b>
+<b class="nc"><i class="no-highlight">391</i>&nbsp;                    } else if (item.getApplicationStatus() == ApplicationStatus.ACCEPTED) {</b>
+<b class="nc"><i class="no-highlight">392</i>&nbsp;                        setText(item.toString());</b>
+<b class="nc"><i class="no-highlight">393</i>&nbsp;                        setGraphic(null);</b>
+<b class="nc"><i class="no-highlight">394</i>&nbsp;                        setStyle(&quot;-fx-background-color: #d7ffc8;&quot;);</b>
+<i class="no-highlight">395</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">396</i>&nbsp;                        setText(item.toString());</b>
+<i class="no-highlight">397</i>&nbsp;                    }
+<i class="no-highlight">398</i>&nbsp;                }
+<i class="no-highlight">399</i>&nbsp;            }
+<i class="no-highlight">400</i>&nbsp;        });
+<i class="no-highlight">401</i>&nbsp;    }
+<i class="no-highlight">402</i>&nbsp;
+<i class="no-highlight">403</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-14 17:40</div>
+</div>
+</body>
+</html>

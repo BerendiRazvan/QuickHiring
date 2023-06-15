@@ -1,0 +1,417 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AddOrModifyJobController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: AddOrModifyJobController (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AddOrModifyJobController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/111)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">AddOrModifyJobController$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/117)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;import domain.Company;
+<i class="no-highlight">2</i>&nbsp;import domain.Job;
+<i class="no-highlight">3</i>&nbsp;import domain.Location;
+<i class="no-highlight">4</i>&nbsp;import domain.User;
+<i class="no-highlight">5</i>&nbsp;import enums.*;
+<i class="no-highlight">6</i>&nbsp;import javafx.collections.FXCollections;
+<i class="no-highlight">7</i>&nbsp;import javafx.collections.ObservableList;
+<i class="no-highlight">8</i>&nbsp;import javafx.event.ActionEvent;
+<i class="no-highlight">9</i>&nbsp;import javafx.event.EventHandler;
+<i class="no-highlight">10</i>&nbsp;import javafx.fxml.FXML;
+<i class="no-highlight">11</i>&nbsp;import javafx.fxml.FXMLLoader;
+<i class="no-highlight">12</i>&nbsp;import javafx.fxml.Initializable;
+<i class="no-highlight">13</i>&nbsp;import javafx.scene.Parent;
+<i class="no-highlight">14</i>&nbsp;import javafx.scene.Scene;
+<i class="no-highlight">15</i>&nbsp;import javafx.scene.control.*;
+<i class="no-highlight">16</i>&nbsp;import javafx.stage.Stage;
+<i class="no-highlight">17</i>&nbsp;import javafx.stage.WindowEvent;
+<i class="no-highlight">18</i>&nbsp;import javafx.util.Duration;
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">21</i>&nbsp;import java.io.Serializable;
+<i class="no-highlight">22</i>&nbsp;import java.net.URL;
+<i class="no-highlight">23</i>&nbsp;import java.rmi.RemoteException;
+<i class="no-highlight">24</i>&nbsp;import java.rmi.server.UnicastRemoteObject;
+<i class="no-highlight">25</i>&nbsp;import java.time.LocalDateTime;
+<i class="no-highlight">26</i>&nbsp;import java.util.Optional;
+<i class="no-highlight">27</i>&nbsp;import java.util.ResourceBundle;
+<i class="no-highlight">28</i>&nbsp;
+<b class="nc"><i class="no-highlight">29</i>&nbsp;public class AddOrModifyJobController extends UnicastRemoteObject implements Initializable, IObserver, Serializable {</b>
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    private IService server;
+<i class="no-highlight">32</i>&nbsp;    private Parent parentRoot;
+<i class="no-highlight">33</i>&nbsp;    private Stage stage;
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;    private User loggedUser;
+<i class="no-highlight">36</i>&nbsp;    private Job selectedJob;
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;    private ManageJobsController manageJobsController;
+<i class="no-highlight">39</i>&nbsp;
+<b class="nc"><i class="no-highlight">40</i>&nbsp;    ObservableList&lt;Company&gt; companyModelList = FXCollections.observableArrayList();</b>
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    // FXML Components
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    @FXML
+<i class="no-highlight">45</i>&nbsp;    Button backViewButton;
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    @FXML
+<i class="no-highlight">48</i>&nbsp;    Button addModifyButton;
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    @FXML
+<i class="no-highlight">51</i>&nbsp;    Button infoButton;
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;    @FXML
+<i class="no-highlight">54</i>&nbsp;    TextField titleTextField;
+<i class="no-highlight">55</i>&nbsp;
+<i class="no-highlight">56</i>&nbsp;    @FXML
+<i class="no-highlight">57</i>&nbsp;    CheckBox openForApplicationsCheckBox;
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    @FXML
+<i class="no-highlight">60</i>&nbsp;    TextArea descriptionTextArea;
+<i class="no-highlight">61</i>&nbsp;
+<i class="no-highlight">62</i>&nbsp;    @FXML
+<i class="no-highlight">63</i>&nbsp;    ListView&lt;Company&gt; companyList;
+<i class="no-highlight">64</i>&nbsp;
+<i class="no-highlight">65</i>&nbsp;    @FXML
+<i class="no-highlight">66</i>&nbsp;    ComboBox&lt;Location&gt; locationsComboBox;
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    @FXML
+<i class="no-highlight">69</i>&nbsp;    ComboBox&lt;JobType&gt; jobTypeComboBox;
+<i class="no-highlight">70</i>&nbsp;
+<i class="no-highlight">71</i>&nbsp;    @FXML
+<i class="no-highlight">72</i>&nbsp;    ComboBox&lt;ExperienceLevel&gt; experienceLevelComboBox;
+<i class="no-highlight">73</i>&nbsp;
+<i class="no-highlight">74</i>&nbsp;    @FXML
+<i class="no-highlight">75</i>&nbsp;    ComboBox&lt;EmploymentType&gt; employmentTypeComboBox;
+<i class="no-highlight">76</i>&nbsp;
+<i class="no-highlight">77</i>&nbsp;    @FXML
+<i class="no-highlight">78</i>&nbsp;    Label errorJTitleLabel;
+<i class="no-highlight">79</i>&nbsp;
+<i class="no-highlight">80</i>&nbsp;    @FXML
+<i class="no-highlight">81</i>&nbsp;    Label errorJDLabel;
+<i class="no-highlight">82</i>&nbsp;
+<i class="no-highlight">83</i>&nbsp;    @FXML
+<i class="no-highlight">84</i>&nbsp;    Label errorJTLabel;
+<i class="no-highlight">85</i>&nbsp;
+<i class="no-highlight">86</i>&nbsp;    @FXML
+<i class="no-highlight">87</i>&nbsp;    Label errorELLabel;
+<i class="no-highlight">88</i>&nbsp;
+<i class="no-highlight">89</i>&nbsp;    @FXML
+<i class="no-highlight">90</i>&nbsp;    Label errorETLabel;
+<i class="no-highlight">91</i>&nbsp;
+<i class="no-highlight">92</i>&nbsp;    @FXML
+<i class="no-highlight">93</i>&nbsp;    Label errorCLLabel;
+<i class="no-highlight">94</i>&nbsp;
+<i class="no-highlight">95</i>&nbsp;    @FXML
+<i class="no-highlight">96</i>&nbsp;    Label pageLabel;
+<i class="no-highlight">97</i>&nbsp;
+<i class="no-highlight">98</i>&nbsp;
+<b class="nc"><i class="no-highlight">99</i>&nbsp;    public AddOrModifyJobController() throws RemoteException {</b>
+<i class="no-highlight">100</i>&nbsp;    }
+<i class="no-highlight">101</i>&nbsp;
+<i class="no-highlight">102</i>&nbsp;    @FXML
+<i class="no-highlight">103</i>&nbsp;    public void initialize(URL location, ResourceBundle resources) {
+<b class="nc"><i class="no-highlight">104</i>&nbsp;        jobTypeComboBox.setItems(FXCollections.observableArrayList(JobType.values()));</b>
+<b class="nc"><i class="no-highlight">105</i>&nbsp;        experienceLevelComboBox.setItems(FXCollections.observableArrayList(ExperienceLevel.values()));</b>
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        employmentTypeComboBox.setItems(FXCollections.observableArrayList(EmploymentType.values()));</b>
+<i class="no-highlight">107</i>&nbsp;
+<b class="nc"><i class="no-highlight">108</i>&nbsp;        Tooltip tooltip = new Tooltip(</b>
+<i class="no-highlight">109</i>&nbsp;                &quot;If you did not find your company in this list, please contact us at the \n&quot; +
+<i class="no-highlight">110</i>&nbsp;                        &quot;email address: suport@quickhiring.com to present you the offers available\n&quot; +
+<i class="no-highlight">111</i>&nbsp;                        &quot;for a collaboration and to register the company with the necessary\n&quot; +
+<i class="no-highlight">112</i>&nbsp;                        &quot;information in our database.&quot;);
+<b class="nc"><i class="no-highlight">113</i>&nbsp;        tooltip.setShowDelay(Duration.ZERO);</b>
+<b class="nc"><i class="no-highlight">114</i>&nbsp;        tooltip.setHideDelay(Duration.ZERO);</b>
+<b class="nc"><i class="no-highlight">115</i>&nbsp;        infoButton.setTooltip(tooltip);</b>
+<i class="no-highlight">116</i>&nbsp;    }
+<i class="no-highlight">117</i>&nbsp;
+<i class="no-highlight">118</i>&nbsp;    public void setServerAndStage(IService s, User user, Job job, Stage primaryStage, Parent root) {
+<b class="nc"><i class="no-highlight">119</i>&nbsp;        this.server = s;</b>
+<b class="nc"><i class="no-highlight">120</i>&nbsp;        this.stage = primaryStage;</b>
+<b class="nc"><i class="no-highlight">121</i>&nbsp;        this.parentRoot = root;</b>
+<b class="nc"><i class="no-highlight">122</i>&nbsp;        this.loggedUser = user;</b>
+<b class="nc"><i class="no-highlight">123</i>&nbsp;        this.selectedJob = job;</b>
+<i class="no-highlight">124</i>&nbsp;
+<b class="nc"><i class="no-highlight">125</i>&nbsp;        initData();</b>
+<i class="no-highlight">126</i>&nbsp;    }
+<i class="no-highlight">127</i>&nbsp;
+<i class="no-highlight">128</i>&nbsp;    private void initData() {
+<i class="no-highlight">129</i>&nbsp;
+<b class="nc"><i class="no-highlight">130</i>&nbsp;        pageLabel.setText(&quot;Add job&quot;);</b>
+<b class="nc"><i class="no-highlight">131</i>&nbsp;        addModifyButton.setText(&quot;Add job&quot;);</b>
+<i class="no-highlight">132</i>&nbsp;
+<b class="nc"><i class="no-highlight">133</i>&nbsp;        companyModelList.setAll(server.getAllCompanies());</b>
+<b class="nc"><i class="no-highlight">134</i>&nbsp;        companyList.setItems(companyModelList);</b>
+<b class="nc"><i class="no-highlight">135</i>&nbsp;        companyList.getSelectionModel().selectedItemProperty().addListener(o -&gt; {</b>
+<b class="nc"><i class="no-highlight">136</i>&nbsp;            locationsComboBox.setDisable(false);</b>
+<b class="nc"><i class="no-highlight">137</i>&nbsp;            Company company = companyList.getSelectionModel().getSelectedItem();</b>
+<b class="nc"><i class="no-highlight">138</i>&nbsp;            locationsComboBox.setItems(FXCollections.observableArrayList(company.getLocations()));</b>
+<i class="no-highlight">139</i>&nbsp;        });
+<i class="no-highlight">140</i>&nbsp;
+<b class="nc"><i class="no-highlight">141</i>&nbsp;        if (selectedJob != null) {</b>
+<b class="nc"><i class="no-highlight">142</i>&nbsp;            addModifyButton.setText(&quot;Modify job&quot;);</b>
+<b class="nc"><i class="no-highlight">143</i>&nbsp;            pageLabel.setText(&quot;Modify job&quot;);</b>
+<i class="no-highlight">144</i>&nbsp;
+<b class="nc"><i class="no-highlight">145</i>&nbsp;            titleTextField.setText(selectedJob.getTitle());</b>
+<b class="nc"><i class="no-highlight">146</i>&nbsp;            descriptionTextArea.setText(selectedJob.getDescription());</b>
+<b class="nc"><i class="no-highlight">147</i>&nbsp;            jobTypeComboBox.setValue(selectedJob.getJobType());</b>
+<b class="nc"><i class="no-highlight">148</i>&nbsp;            experienceLevelComboBox.setValue(selectedJob.getExperienceLevel());</b>
+<b class="nc"><i class="no-highlight">149</i>&nbsp;            employmentTypeComboBox.setValue(selectedJob.getEmploymentType());</b>
+<i class="no-highlight">150</i>&nbsp;
+<b class="nc"><i class="no-highlight">151</i>&nbsp;            if (selectedJob.getJobAvailability() == JobAvailability.OPEN_FOR_APPLICATIONS)</b>
+<b class="nc"><i class="no-highlight">152</i>&nbsp;                openForApplicationsCheckBox.setSelected(true);</b>
+<b class="nc"><i class="no-highlight">153</i>&nbsp;            else if (selectedJob.getJobAvailability() == JobAvailability.CLOSED_FOR_APPLICATIONS)</b>
+<b class="nc"><i class="no-highlight">154</i>&nbsp;                openForApplicationsCheckBox.setSelected(false);</b>
+<i class="no-highlight">155</i>&nbsp;
+<b class="nc"><i class="no-highlight">156</i>&nbsp;            if (!companyList.getItems().isEmpty()) {</b>
+<b class="nc"><i class="no-highlight">157</i>&nbsp;                Optional&lt;Company&gt; company = companyList.getItems()</b>
+<b class="nc"><i class="no-highlight">158</i>&nbsp;                        .stream()</b>
+<b class="nc"><i class="no-highlight">159</i>&nbsp;                        .filter(c -&gt; c.getId().equals(selectedJob.getCompany().getId()))</b>
+<b class="nc"><i class="no-highlight">160</i>&nbsp;                        .findFirst();</b>
+<b class="nc"><i class="no-highlight">161</i>&nbsp;                company.ifPresent(value -&gt; companyList.getSelectionModel().select(value));</b>
+<b class="nc"><i class="no-highlight">162</i>&nbsp;                locationsComboBox.setValue(selectedJob.getLocation());</b>
+<i class="no-highlight">163</i>&nbsp;            }
+<i class="no-highlight">164</i>&nbsp;        }
+<i class="no-highlight">165</i>&nbsp;
+<b class="nc"><i class="no-highlight">166</i>&nbsp;        clearErrors();</b>
+<i class="no-highlight">167</i>&nbsp;    }
+<i class="no-highlight">168</i>&nbsp;
+<i class="no-highlight">169</i>&nbsp;    @FXML
+<i class="no-highlight">170</i>&nbsp;    protected void onActionBackView(ActionEvent event) {
+<i class="no-highlight">171</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">172</i>&nbsp;            setManageJobsController();</b>
+<b class="nc"><i class="no-highlight">173</i>&nbsp;            openNextView(event);</b>
+<b class="nc"><i class="no-highlight">174</i>&nbsp;            stage.setTitle(&quot;Quick Hiring - Manage jobs&quot;);</b>
+<b class="nc"><i class="no-highlight">175</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">176</i>&nbsp;            System.out.println(e.getMessage());</b>
+<b class="nc"><i class="no-highlight">177</i>&nbsp;        }</b>
+<i class="no-highlight">178</i>&nbsp;    }
+<i class="no-highlight">179</i>&nbsp;
+<i class="no-highlight">180</i>&nbsp;    private void setManageJobsController() throws IOException {
+<b class="nc"><i class="no-highlight">181</i>&nbsp;        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(&quot;views/manage-jobs-view.fxml&quot;));</b>
+<b class="nc"><i class="no-highlight">182</i>&nbsp;        parentRoot = fxmlLoader.load();</b>
+<b class="nc"><i class="no-highlight">183</i>&nbsp;        manageJobsController = fxmlLoader.&lt;ManageJobsController&gt;getController();</b>
+<b class="nc"><i class="no-highlight">184</i>&nbsp;        manageJobsController.setServerAndStage(server, loggedUser, stage, parentRoot);</b>
+<i class="no-highlight">185</i>&nbsp;    }
+<i class="no-highlight">186</i>&nbsp;
+<i class="no-highlight">187</i>&nbsp;    private void openNextView(ActionEvent event) {
+<b class="nc"><i class="no-highlight">188</i>&nbsp;        stage.setScene(new Scene(parentRoot));</b>
+<i class="no-highlight">189</i>&nbsp;
+<b class="nc"><i class="no-highlight">190</i>&nbsp;        stage.setOnCloseRequest(new EventHandler&lt;WindowEvent&gt;() {</b>
+<i class="no-highlight">191</i>&nbsp;            @Override
+<i class="no-highlight">192</i>&nbsp;            public void handle(WindowEvent event) {
+<i class="no-highlight">193</i>&nbsp;                try {
+<b class="nc"><i class="no-highlight">194</i>&nbsp;                    server.logout(loggedUser);</b>
+<b class="nc"><i class="no-highlight">195</i>&nbsp;                } catch (ServiceException exception) {</b>
+<b class="nc"><i class="no-highlight">196</i>&nbsp;                    exception.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">197</i>&nbsp;                }</b>
+<b class="nc"><i class="no-highlight">198</i>&nbsp;                System.exit(0);</b>
+<i class="no-highlight">199</i>&nbsp;            }
+<i class="no-highlight">200</i>&nbsp;        });
+<i class="no-highlight">201</i>&nbsp;    }
+<i class="no-highlight">202</i>&nbsp;
+<i class="no-highlight">203</i>&nbsp;    private void clearErrors() {
+<b class="nc"><i class="no-highlight">204</i>&nbsp;        errorJTitleLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">205</i>&nbsp;        errorJDLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">206</i>&nbsp;        errorJTLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">207</i>&nbsp;        errorELLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">208</i>&nbsp;        errorETLabel.setText(&quot;&quot;);</b>
+<b class="nc"><i class="no-highlight">209</i>&nbsp;        errorCLLabel.setText(&quot;&quot;);</b>
+<i class="no-highlight">210</i>&nbsp;    }
+<i class="no-highlight">211</i>&nbsp;
+<i class="no-highlight">212</i>&nbsp;    @FXML
+<i class="no-highlight">213</i>&nbsp;    protected void anActionAddOrModifyJob(ActionEvent event) {
+<b class="nc"><i class="no-highlight">214</i>&nbsp;        boolean error = false;</b>
+<i class="no-highlight">215</i>&nbsp;
+<b class="nc"><i class="no-highlight">216</i>&nbsp;        if (titleTextField.getText().isEmpty()) {</b>
+<b class="nc"><i class="no-highlight">217</i>&nbsp;            error = true;</b>
+<b class="nc"><i class="no-highlight">218</i>&nbsp;            errorJTitleLabel.setText(&quot;Title is empty&quot;);</b>
+<i class="no-highlight">219</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">220</i>&nbsp;        if (descriptionTextArea.getText().isEmpty()) {</b>
+<b class="nc"><i class="no-highlight">221</i>&nbsp;            error = true;</b>
+<b class="nc"><i class="no-highlight">222</i>&nbsp;            errorJDLabel.setText(&quot;Description is empty&quot;);</b>
+<i class="no-highlight">223</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">224</i>&nbsp;        if (jobTypeComboBox.getValue() == null) {</b>
+<b class="nc"><i class="no-highlight">225</i>&nbsp;            error = true;</b>
+<b class="nc"><i class="no-highlight">226</i>&nbsp;            errorJTLabel.setText(&quot;Job type is not selected&quot;);</b>
+<i class="no-highlight">227</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">228</i>&nbsp;        if (experienceLevelComboBox.getValue() == null) {</b>
+<b class="nc"><i class="no-highlight">229</i>&nbsp;            error = true;</b>
+<b class="nc"><i class="no-highlight">230</i>&nbsp;            errorELLabel.setText(&quot;Experience level is not selected&quot;);</b>
+<i class="no-highlight">231</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">232</i>&nbsp;        if (employmentTypeComboBox.getValue() == null) {</b>
+<b class="nc"><i class="no-highlight">233</i>&nbsp;            error = true;</b>
+<b class="nc"><i class="no-highlight">234</i>&nbsp;            errorETLabel.setText(&quot;Employment type is not selected&quot;);</b>
+<i class="no-highlight">235</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">236</i>&nbsp;        if (locationsComboBox.getValue() == null) {</b>
+<b class="nc"><i class="no-highlight">237</i>&nbsp;            error = true;</b>
+<b class="nc"><i class="no-highlight">238</i>&nbsp;            errorCLLabel.setText(&quot;Company location is not selected&quot;);</b>
+<i class="no-highlight">239</i>&nbsp;        }
+<i class="no-highlight">240</i>&nbsp;
+<b class="nc"><i class="no-highlight">241</i>&nbsp;        if (!error) {</b>
+<i class="no-highlight">242</i>&nbsp;
+<b class="nc"><i class="no-highlight">243</i>&nbsp;            Job job = new Job();</b>
+<b class="nc"><i class="no-highlight">244</i>&nbsp;            job.setTitle(titleTextField.getText());</b>
+<b class="nc"><i class="no-highlight">245</i>&nbsp;            job.setDescription(descriptionTextArea.getText());</b>
+<b class="nc"><i class="no-highlight">246</i>&nbsp;            job.setPostingDate(LocalDateTime.now());</b>
+<b class="nc"><i class="no-highlight">247</i>&nbsp;            job.setJobType(jobTypeComboBox.getValue());</b>
+<b class="nc"><i class="no-highlight">248</i>&nbsp;            job.setExperienceLevel(experienceLevelComboBox.getValue());</b>
+<b class="nc"><i class="no-highlight">249</i>&nbsp;            job.setEmploymentType(employmentTypeComboBox.getValue());</b>
+<b class="nc"><i class="no-highlight">250</i>&nbsp;            job.setCompany(companyList.getSelectionModel().getSelectedItem());</b>
+<b class="nc"><i class="no-highlight">251</i>&nbsp;            job.setLocation(locationsComboBox.getValue());</b>
+<b class="nc"><i class="no-highlight">252</i>&nbsp;            job.setJobAvailability(openForApplicationsCheckBox.isSelected() ?</b>
+<b class="nc"><i class="no-highlight">253</i>&nbsp;                    JobAvailability.OPEN_FOR_APPLICATIONS : JobAvailability.CLOSED_FOR_APPLICATIONS);</b>
+<b class="nc"><i class="no-highlight">254</i>&nbsp;            job.setRecruiter(loggedUser);</b>
+<i class="no-highlight">255</i>&nbsp;
+<b class="nc"><i class="no-highlight">256</i>&nbsp;            if (selectedJob == null) {</b>
+<i class="no-highlight">257</i>&nbsp;                // add
+<i class="no-highlight">258</i>&nbsp;                try {
+<b class="nc"><i class="no-highlight">259</i>&nbsp;                    server.addJob(job);</b>
+<b class="nc"><i class="no-highlight">260</i>&nbsp;                    clearErrors();</b>
+<b class="nc"><i class="no-highlight">261</i>&nbsp;                } catch (ServiceException e) {</b>
+<b class="nc"><i class="no-highlight">262</i>&nbsp;                    e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">263</i>&nbsp;                }</b>
+<i class="no-highlight">264</i>&nbsp;
+<i class="no-highlight">265</i>&nbsp;            } else {
+<i class="no-highlight">266</i>&nbsp;                // modify
+<i class="no-highlight">267</i>&nbsp;                try {
+<b class="nc"><i class="no-highlight">268</i>&nbsp;                    server.modifyJob(selectedJob.getId(), job);</b>
+<b class="nc"><i class="no-highlight">269</i>&nbsp;                    clearErrors();</b>
+<b class="nc"><i class="no-highlight">270</i>&nbsp;                } catch (ServiceException e) {</b>
+<b class="nc"><i class="no-highlight">271</i>&nbsp;                    e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">272</i>&nbsp;                }</b>
+<i class="no-highlight">273</i>&nbsp;            }
+<i class="no-highlight">274</i>&nbsp;
+<i class="no-highlight">275</i>&nbsp;            // back to manage jobs
+<i class="no-highlight">276</i>&nbsp;            try {
+<b class="nc"><i class="no-highlight">277</i>&nbsp;                setManageJobsController();</b>
+<b class="nc"><i class="no-highlight">278</i>&nbsp;                openNextView(event);</b>
+<b class="nc"><i class="no-highlight">279</i>&nbsp;                stage.setTitle(&quot;Quick Hiring - Manage jobs&quot;);</b>
+<b class="nc"><i class="no-highlight">280</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">281</i>&nbsp;                System.out.println(e.getMessage());</b>
+<b class="nc"><i class="no-highlight">282</i>&nbsp;            }</b>
+<i class="no-highlight">283</i>&nbsp;        }
+<i class="no-highlight">284</i>&nbsp;    }
+<i class="no-highlight">285</i>&nbsp;
+<i class="no-highlight">286</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-14 17:40</div>
+</div>
+</body>
+</html>

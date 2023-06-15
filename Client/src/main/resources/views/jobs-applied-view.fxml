@@ -3,30 +3,69 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JobsAppliedController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JobsAppliedController">
    <children>
-      <Button fx:id="backViewButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBackView" text="back" />
-      <ListView fx:id="appliedStatusList" layoutX="14.0" layoutY="59.0" prefHeight="222.0" prefWidth="138.0" />
-      <ListView fx:id="inReviewStatusList" layoutX="161.0" layoutY="59.0" prefHeight="222.0" prefWidth="138.0" />
-      <ListView fx:id="interviewStatusList" layoutX="308.0" layoutY="59.0" prefHeight="222.0" prefWidth="138.0" />
-      <ListView fx:id="offerStatusList" layoutX="453.0" layoutY="59.0" prefHeight="222.0" prefWidth="138.0" />
-      <Label layoutX="14.0" layoutY="41.0" text="applied" />
-      <Label layoutX="161.0" layoutY="41.0" text="in review/tehnical test" />
-      <Label layoutX="308.0" layoutY="41.0" text="interview" />
-      <Label layoutX="453.0" layoutY="41.0" text="Accepted/rejected" />
-      <Button fx:id="withdrawApplicationButton" layoutX="437.0" layoutY="427.0" mnemonicParsing="false" onAction="#onActionWithdrawApplication" text="withdraw your application" />
-      <Pane layoutX="14.0" layoutY="285.0" prefHeight="168.0" prefWidth="198.0" style="-fx-border-color: black;">
+      <AnchorPane id="paneMain" prefHeight="550.0" prefWidth="297.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="jobDetailsLabel" layoutX="14.0" layoutY="14.0" text="Job applied details..." />
+            <AnchorPane id="profileCard" layoutX="28.0" layoutY="73.0" prefHeight="225.0" prefWidth="210.0" style="-fx-background-color: transparent;" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="75.0">
+               <children>
+                  <Label id="info_label" fx:id="jobDetailsLabel" alignment="TOP_LEFT" layoutX="10.0" prefHeight="184.0" prefWidth="192.0" style="-fx-background-color: transaprent;" stylesheets="@../styles/label-style.css" text="Job applied details..." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="profileCard" layoutX="28.0" layoutY="313.0" prefHeight="225.0" prefWidth="210.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="310.0">
+               <children>
+                  <Label id="info_label" fx:id="applicationDetailsLabel" alignment="TOP_LEFT" layoutX="6.0" layoutY="26.0" prefHeight="156.0" prefWidth="170.0" style="-fx-background-color: transparent;" stylesheets="@../styles/label-style.css" text="Info about the selected application..." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="backViewButton" layoutX="29.0" layoutY="17.0" mnemonicParsing="false" onAction="#onActionBackView" prefHeight="32.0" prefWidth="32.0" stylesheets="@../styles/button-style.css" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/backBtnImg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
-      </Pane>
-      <Pane layoutX="213.0" layoutY="285.0" prefHeight="168.0" prefWidth="216.0" style="-fx-border-color: black;">
-         <children>
-            <Label fx:id="applicationDetailsLabel" layoutX="14.0" layoutY="14.0" text="Info about the selected application..." />
-         </children>
-      </Pane>
+      </AnchorPane>
+      <ListView fx:id="appliedStatusList" layoutX="264.0" layoutY="188.0" prefHeight="225.0" prefWidth="155.0" stylesheets="@../styles/list-style.css" AnchorPane.rightAnchor="535.0" AnchorPane.topAnchor="200.0" />
+      <ListView fx:id="inReviewStatusList" layoutX="432.0" layoutY="146.0" prefHeight="225.0" prefWidth="155.0" stylesheets="@../styles/list-style.css" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="150.0" />
+      <ListView fx:id="interviewStatusList" layoutX="602.0" layoutY="188.0" prefHeight="225.0" prefWidth="155.0" stylesheets="@../styles/list-style.css" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="200.0" />
+      <ListView fx:id="offerStatusList" layoutX="773.0" layoutY="132.0" prefHeight="225.0" prefWidth="155.0" stylesheets="@../styles/list-style.css" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="150.0" />
+      <Label id="info_label" layoutX="304.0" layoutY="170.0" style="-fx-border-radius: 7; -fx-border-color: #2d3367; -fx-border-width: 2;" stylesheets="@../styles/label-style.css" text=" Applied " AnchorPane.rightAnchor="580.0" AnchorPane.topAnchor="170.0" />
+      <Label id="info_label" layoutX="421.0" layoutY="120.0" style="-fx-border-width: 2; -fx-border-color: #2d3367; -fx-border-radius: 7;" stylesheets="@../styles/label-style.css" text=" In review/Tehnical test " AnchorPane.rightAnchor="357.5" AnchorPane.topAnchor="120.0" />
+      <Label id="info_label" layoutX="638.0" layoutY="170.0" style="-fx-border-radius: 7; -fx-border-color: #2d3367; -fx-border-width: 2;" stylesheets="@../styles/label-style.css" text=" Interview " AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="170.0" />
+      <Label id="info_label" layoutX="749.0" layoutY="120.0" style="-fx-border-width: 2; -fx-border-color: #2d3367; -fx-border-radius: 7;" stylesheets="@../styles/label-style.css" text=" Result: Accepted/Rejected " AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="120.0" />
+      <Button fx:id="withdrawApplicationButton" layoutX="739.0" layoutY="497.0" mnemonicParsing="false" onAction="#onActionWithdrawApplication" prefHeight="30.0" prefWidth="190.0" stylesheets="@../styles/button-style.css" text="Withdraw application" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="75.0" />
+      <ImageView fitHeight="112.0" fitWidth="207.0" layoutX="257.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="535.0">
+         <image>
+            <Image url="@../images/loginPageLogo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="361.0" layoutY="118.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" rotate="9.6" AnchorPane.rightAnchor="533.0" AnchorPane.topAnchor="117.0">
+         <image>
+            <Image url="@../images/up-arrow%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="599.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" rotate="73.6" AnchorPane.rightAnchor="302.0" AnchorPane.topAnchor="122.0">
+         <image>
+            <Image url="@../images/up-arrow%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="50.0" layoutX="699.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="125.0">
+         <image>
+            <Image url="@../images/up-arrow%20(1).png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="493.0" layoutY="24.0" prefHeight="35.0" prefWidth="175.0" text="Applications" textFill="#2d3367" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
