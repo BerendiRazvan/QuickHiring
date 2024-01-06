@@ -23,6 +23,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -81,16 +82,19 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
     Label errorJDLabel;
 
     @FXML
-    Label errorJTLabel;
-
-    @FXML
     Label errorELLabel;
 
     @FXML
     Label errorETLabel;
 
     @FXML
+    Label errorJTLabel;
+
+    @FXML
     Label errorCLLabel;
+
+    @FXML
+    Label errorActionLabel;
 
     @FXML
     Label pageLabel;
@@ -163,6 +167,7 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
             }
         }
 
+        setListeners();
         clearErrors();
     }
 
@@ -207,6 +212,58 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
         errorELLabel.setText("");
         errorETLabel.setText("");
         errorCLLabel.setText("");
+        errorActionLabel.setText("");
+    }
+
+    private void setListeners() {
+        titleTextField.textProperty().addListener(o -> {
+            errorJTitleLabel.setText("");
+            errorActionLabel.setText("");
+            titleTextField.getStylesheets().clear();
+            titleTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        descriptionTextArea.textProperty().addListener(o -> {
+            errorJDLabel.setText("");
+            errorActionLabel.setText("");
+            descriptionTextArea.getStylesheets().clear();
+            descriptionTextArea.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-area-style.css")).toExternalForm());
+        });
+
+        experienceLevelComboBox.valueProperty().addListener(o -> {
+            errorELLabel.setText("");
+            errorActionLabel.setText("");
+            experienceLevelComboBox.getStylesheets().clear();
+            experienceLevelComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-style.css")).toExternalForm());
+        });
+
+        employmentTypeComboBox.valueProperty().addListener(o -> {
+            errorETLabel.setText("");
+            errorActionLabel.setText("");
+            employmentTypeComboBox.getStylesheets().clear();
+            employmentTypeComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-style.css")).toExternalForm());
+        });
+
+        jobTypeComboBox.valueProperty().addListener(o -> {
+            errorJTLabel.setText("");
+            errorActionLabel.setText("");
+            jobTypeComboBox.getStylesheets().clear();
+            jobTypeComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-style.css")).toExternalForm());
+        });
+
+        locationsComboBox.valueProperty().addListener(o -> {
+            errorCLLabel.setText("");
+            errorActionLabel.setText("");
+            locationsComboBox.getStylesheets().clear();
+            locationsComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-style.css")).toExternalForm());
+        });
+
     }
 
     @FXML
@@ -216,26 +273,44 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
         if (titleTextField.getText().isEmpty()) {
             error = true;
             errorJTitleLabel.setText("Title is empty");
+            titleTextField.getStylesheets().clear();
+            titleTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (descriptionTextArea.getText().isEmpty()) {
             error = true;
             errorJDLabel.setText("Description is empty");
+            descriptionTextArea.getStylesheets().clear();
+            descriptionTextArea.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-area-error-style.css")).toExternalForm());
         }
         if (jobTypeComboBox.getValue() == null) {
             error = true;
             errorJTLabel.setText("Job type is not selected");
+            jobTypeComboBox.getStylesheets().clear();
+            jobTypeComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
         }
         if (experienceLevelComboBox.getValue() == null) {
             error = true;
             errorELLabel.setText("Experience level is not selected");
+            experienceLevelComboBox.getStylesheets().clear();
+            experienceLevelComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
         }
         if (employmentTypeComboBox.getValue() == null) {
             error = true;
             errorETLabel.setText("Employment type is not selected");
+            employmentTypeComboBox.getStylesheets().clear();
+            employmentTypeComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
         }
         if (locationsComboBox.getValue() == null) {
             error = true;
             errorCLLabel.setText("Company location is not selected");
+            locationsComboBox.getStylesheets().clear();
+            locationsComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
         }
 
         if (!error) {
@@ -259,7 +334,8 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
                     server.addJob(job);
                     clearErrors();
                 } catch (ServiceException e) {
-                    e.printStackTrace();
+                    errorActionLabel.setText("Invalid job!");
+                    setErrors(e.getMessage());
                 }
 
             } else {
@@ -268,7 +344,8 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
                     server.modifyJob(selectedJob.getId(), job);
                     clearErrors();
                 } catch (ServiceException e) {
-                    e.printStackTrace();
+                    errorActionLabel.setText("Invalid job!");
+                    setErrors(e.getMessage());
                 }
             }
 
@@ -281,6 +358,54 @@ public class AddOrModifyJobController extends UnicastRemoteObject implements Ini
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    private void setErrors(String message) {
+        boolean ok = true;
+        if (message.toLowerCase().contains("title")) {
+            errorJTitleLabel.setText(message);
+            ok = false;
+            titleTextField.getStylesheets().clear();
+            titleTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
+        }
+        if (message.toLowerCase().contains("description")) {
+            errorJDLabel.setText(message);
+            ok = false;
+            descriptionTextArea.getStylesheets().clear();
+            descriptionTextArea.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-area-error-style.css")).toExternalForm());
+        }
+        if (message.toLowerCase().contains("location") || message.toLowerCase().contains("company")) {
+            errorCLLabel.setText(message);
+            ok = false;
+            locationsComboBox.getStylesheets().clear();
+            locationsComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
+        }
+        if (message.toLowerCase().contains("experience level")) {
+            errorELLabel.setText(message);
+            ok = false;
+            experienceLevelComboBox.getStylesheets().clear();
+            experienceLevelComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
+        }
+        if (message.toLowerCase().contains("employment type")) {
+            errorETLabel.setText(message);
+            ok = false;
+            employmentTypeComboBox.getStylesheets().clear();
+            employmentTypeComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
+        }
+        if (message.toLowerCase().contains("job type")) {
+            errorJTLabel.setText(message);
+            ok = false;
+            jobTypeComboBox.getStylesheets().clear();
+            jobTypeComboBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
+        }
+        if (ok)
+            errorActionLabel.setText(message);
     }
 
 }

@@ -36,14 +36,38 @@
       <Label id="info_label" fx:id="passwordConfirmationLabel" layoutX="694.0" layoutY="349.0" stylesheets="@../styles/label-style.css" text="Confirm password " AnchorPane.leftAnchor="710.0" AnchorPane.topAnchor="345.0" />
       <Label id="info_label" fx:id="birthDateLabel" layoutX="731.0" layoutY="264.0" stylesheets="@../styles/label-style.css" text="Birth date " AnchorPane.leftAnchor="710.0" AnchorPane.topAnchor="260.0" />
       <Label id="info_label" fx:id="phoneNumberLabel" layoutX="447.0" layoutY="242.0" stylesheets="@../styles/label-style.css" text="Phone number " AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="260.0" />
-      <Label fx:id="errorPLabel" layoutX="443.0" layoutY="408.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="395.0" />
-      <Label fx:id="errorPCLabel" layoutX="689.0" layoutY="394.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="395.0" />
-      <Label fx:id="errorPNoLabel" layoutX="450.0" layoutY="298.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="310.0" />
-      <Label fx:id="errorMCLabel" layoutX="740.0" layoutY="224.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="225.0" />
-      <Label fx:id="errorMLabel" layoutX="443.0" layoutY="202.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="225.0" />
-      <Label fx:id="errorFNLabel" layoutX="450.0" layoutY="143.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="140.0" />
-      <Label fx:id="errorLNLabel" layoutX="740.0" layoutY="116.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="140.0" />
-      <Label fx:id="errorBDLabel" layoutX="700.0" layoutY="298.0" prefHeight="35.0" prefWidth="210.0" text="error..." textFill="RED" AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="310.0" />
+      <Label fx:id="errorPLabel" alignment="TOP_RIGHT" layoutX="403.0" layoutY="408.0" prefHeight="65.0" prefWidth="260.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="395.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorPCLabel" alignment="TOP_RIGHT" layoutX="665.0" layoutY="394.0" prefHeight="43.0" prefWidth="246.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="665.0" AnchorPane.topAnchor="395.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorPNoLabel" alignment="TOP_RIGHT" layoutX="402.0" layoutY="298.0" prefHeight="35.0" prefWidth="260.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="310.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorMCLabel" alignment="TOP_RIGHT" layoutX="740.0" layoutY="224.0" prefHeight="35.0" prefWidth="245.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="665.0" AnchorPane.topAnchor="225.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorMLabel" alignment="TOP_RIGHT" layoutX="443.0" layoutY="202.0" prefHeight="35.0" prefWidth="260.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="225.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorFNLabel" alignment="TOP_RIGHT" layoutX="450.0" layoutY="143.0" prefHeight="35.0" prefWidth="260.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="140.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorLNLabel" alignment="TOP_RIGHT" layoutX="740.0" layoutY="116.0" prefHeight="35.0" prefWidth="245.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="665.0" AnchorPane.topAnchor="140.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorBDLabel" alignment="TOP_RIGHT" layoutX="676.0" layoutY="298.0" prefHeight="35.0" prefWidth="245.0" text="error..." textAlignment="RIGHT" textFill="RED" AnchorPane.leftAnchor="665.0" AnchorPane.topAnchor="310.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
       <Button fx:id="createModifyAccountButton" layoutX="575.0" layoutY="441.0" mnemonicParsing="false" onAction="#onActionCreateModifyAccount" prefHeight="37.0" prefWidth="175.0" style="-fx-font-weight: bold;" stylesheets="@../styles/button-style.css" text="create/modify account" textFill="#3342c7" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="190.0">
          <font>
             <Font size="15.0" />
@@ -65,24 +89,29 @@
                </graphic>
             </Button>
             <ImageView fx:id="imageProfileView" fitHeight="126.0" fitWidth="107.0" layoutX="150.0" layoutY="133.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="135.0" />
-            <Button fx:id="uploadImageButton" layoutX="94.0" layoutY="242.0" mnemonicParsing="false" onAction="#onActionSelectPhoto" prefHeight="28.0" prefWidth="175.0" text="Upload a profile picture" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="270.0">
-               <stylesheets>
-                  <URL value="@../styles/text-field-style.css" />
-                  <URL value="@../styles/button-style.css" />
-               </stylesheets>
+            <Button fx:id="uploadImageButton" layoutX="94.0" layoutY="242.0" mnemonicParsing="false" onAction="#onActionSelectPhoto" prefHeight="28.0" prefWidth="175.0" stylesheets="@../styles/button-style.css" text="Upload a profile picture" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="270.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="errorImgLabel" alignment="CENTER" layoutX="106.0" layoutY="250.0" prefHeight="35.0" prefWidth="150.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="300.0" />
+            <Label fx:id="errorImgLabel" alignment="TOP_CENTER" layoutX="106.0" layoutY="250.0" prefHeight="35.0" prefWidth="150.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
             <ComboBox fx:id="accountTypeBox" layoutX="99.0" layoutY="328.0" prefHeight="30.0" prefWidth="164.0" promptText="Account type" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="365.0" />
-            <Label fx:id="errorATLabel" alignment="CENTER" layoutX="100.0" layoutY="358.0" prefHeight="35.0" prefWidth="164.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="400.0" />
+            <Label fx:id="errorATLabel" alignment="TOP_CENTER" layoutX="100.0" layoutY="358.0" prefHeight="35.0" prefWidth="164.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="400.0">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
             <Button fx:id="uploadResumeButton" layoutX="75.0" layoutY="412.0" mnemonicParsing="false" onAction="#onActionSelectResume" prefHeight="26.0" prefWidth="213.0" stylesheets="@../styles/button-style.css" text="Upload your resume" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="450.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="errorRLabel" alignment="CENTER" layoutX="75.0" layoutY="440.0" prefHeight="35.0" prefWidth="214.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="480.0" />
+            <Label fx:id="errorRLabel" alignment="TOP_CENTER" layoutX="75.0" layoutY="440.0" prefHeight="35.0" prefWidth="214.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="480.0">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <Label id="info_label" fx:id="firstNameLabel" layoutX="450.0" layoutY="55.0" stylesheets="@../styles/label-style.css" text="First name " textFill="#2d3367" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="90.0">
@@ -95,5 +124,10 @@
             <Image url="@../images/loginPageLogo.png" />
          </image>
       </ImageView>
+      <Label fx:id="errorActionLabel" alignment="TOP_CENTER" layoutX="567.0" layoutY="500.0" prefHeight="35.0" prefWidth="210.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="170.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

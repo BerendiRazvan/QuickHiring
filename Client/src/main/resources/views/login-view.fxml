@@ -47,9 +47,9 @@
                   <Font name="Calibri" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="errorLabel" alignment="CENTER" layoutX="45.0" layoutY="456.0" prefHeight="79.0" prefWidth="198.0" text="errors..." textAlignment="CENTER" textFill="RED" visible="false" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="425.0">
+            <Label fx:id="errorLabel" alignment="TOP_CENTER" layoutX="45.0" layoutY="456.0" prefHeight="79.0" prefWidth="198.0" text="errors..." textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="425.0">
                <font>
-                  <Font name="Calibri" size="12.0" />
+                  <Font name="System Italic" size="12.0" />
                </font>
             </Label>
             <Button fx:id="loginButton" layoutX="103.0" layoutY="376.0" mnemonicParsing="false" onAction="#onActionLogin" prefHeight="26.0" prefWidth="94.0" stylesheets="@../styles/button-style.css" text="Sign in" textFill="WHITE" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="172.0" AnchorPane.topAnchor="355.0">
@@ -70,6 +70,16 @@
             <Label id="info_label" fx:id="passwordLabel" layoutX="69.0" layoutY="275.0" style="-fx-background-color: white;" stylesheets="@../styles/label-style.css" text="Password " textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="260.0">
                <font>
                   <Font name="Calibri" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorEmailLabel" alignment="TOP_RIGHT" layoutX="90.0" layoutY="242.0" prefHeight="22.0" prefWidth="293.0" text="error..." textFill="RED" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="245.0">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorPasswordLabel" alignment="TOP_RIGHT" layoutX="90.0" layoutY="313.0" prefHeight="22.0" prefWidth="293.0" text="error..." textFill="RED" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="315.0">
+               <font>
+                  <Font name="System Italic" size="12.0" />
                </font>
             </Label>
          </children>

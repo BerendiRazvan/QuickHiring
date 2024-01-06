@@ -29,8 +29,8 @@
             </Button>
             <AnchorPane id="profileCard" layoutX="20.0" layoutY="104.0" prefHeight="394.0" prefWidth="220.0" style="-fx-background-color: transparent;" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="75.0">
                <children>
-                  <Label id="info_label" fx:id="candidateInfoLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="29.0" prefHeight="335.0" prefWidth="217.0" style="-fx-background-color: transparent;" stylesheets="@../styles/label-style.css" text="candidat info" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                  <ImageView fx:id="imageProfileView" fitHeight="54.0" fitWidth="56.0" layoutX="151.0" layoutY="20.5" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="18.0" />
+                  <TextArea fx:id="candidateInfoTextArea" editable="false" layoutX="10.0" layoutY="67.0" prefHeight="200.0" prefWidth="200.0" promptText="Selected application details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <ImageView fx:id="imageProfileView" fitHeight="65.0" fitWidth="65.0" layoutX="151.0" layoutY="23.5" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
                </children>
             </AnchorPane>
          </children>
@@ -39,13 +39,13 @@
       <ListView fx:id="inReviewStatusList" layoutX="466.0" layoutY="144.0" prefHeight="225.0" prefWidth="155.0" stylesheets="@../styles/list-style.css" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="120.0" />
       <ListView fx:id="interviewStatusList" layoutX="599.0" layoutY="144.0" prefHeight="225.0" prefWidth="155.0" stylesheets="@../styles/list-style.css" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="170.0" />
       <ListView fx:id="offerStatusList" layoutX="735.0" layoutY="144.0" prefHeight="225.0" prefWidth="155.0" stylesheets="@../styles/list-style.css" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="120.0" />
-      <Label fx:id="jobDetailsLabel" alignment="CENTER" layoutX="486.0" layoutY="24.0" text="Manage selection " textFill="#2d3367" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="30.0">
+      <Label fx:id="jobDetailsLabel" alignment="CENTER" layoutX="486.0" layoutY="28.0" text="Manage selection " textFill="#2d3367" AnchorPane.leftAnchor="486.00000000000006" AnchorPane.rightAnchor="236.79999999999995" AnchorPane.topAnchor="28.0">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font></Label>
       <Button fx:id="rejectButton" layoutX="768.0" layoutY="485.0" mnemonicParsing="false" onAction="#onActionRejectCandidate" prefHeight="30.0" prefWidth="155.0" stylesheets="@../styles/button-style.css" text="Reject candidate" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="25.0" />
       <TextArea fx:id="stepDetailsTextArea" layoutX="260.0" layoutY="423.0" prefHeight="96.0" prefWidth="291.0" promptText="Add details" stylesheets="@../styles/text-area-style.css" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="400.0" />
-      <Button fx:id="addDetailsButton" layoutX="557.0" layoutY="485.0" mnemonicParsing="false" onAction="#onActionAddDetails" prefHeight="26.0" prefWidth="90.0" stylesheets="@../styles/button-style.css" text="Add details" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="305.0" />
+      <Button fx:id="addDetailsButton" layoutX="557.0" layoutY="485.0" mnemonicParsing="false" onAction="#onActionAddDetails" prefHeight="26.0" prefWidth="141.0" stylesheets="@../styles/button-style.css" text="Add extra details" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="255.0" />
       <Label id="info_label" layoutX="348.0" layoutY="402.0" prefHeight="22.0" prefWidth="202.0" stylesheets="@../styles/label-style.css" text="Details about the next steps " AnchorPane.bottomAnchor="115.0" AnchorPane.rightAnchor="475.0" />
       <Button fx:id="moveApplicationLButton" layoutX="775.0" layoutY="436.0" mnemonicParsing="false" onAction="#onActionMoveLeftApplication" prefHeight="30.0" prefWidth="40.0" stylesheets="@../styles/button-style.css" text="&lt;" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="140.0">
          <font>
@@ -55,7 +55,10 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Label fx:id="errorLabel" layoutX="555.0" layoutY="442.0" prefHeight="54.0" prefWidth="90.0" text="error..." textFill="RED" visible="false" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="305.0" />
+      <Label fx:id="errorLabel" alignment="BOTTOM_LEFT" layoutX="555.0" layoutY="442.0" prefHeight="54.0" prefWidth="195.0" text="error..." textFill="RED" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="200.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
       <Label id="info_label" layoutX="362.0" layoutY="109.0" style="-fx-border-radius: 7; -fx-border-color: #2d3367; -fx-border-width: 2;" stylesheets="@../styles/label-style.css" text=" Candidates " AnchorPane.rightAnchor="570.0" AnchorPane.topAnchor="140.0" />
       <Label id="info_label" layoutX="466.0" layoutY="96.0" style="-fx-border-width: 2; -fx-border-color: #2d3367; -fx-border-radius: 7;" stylesheets="@../styles/label-style.css" text=" In review/Tehnical test " AnchorPane.rightAnchor="357.5" AnchorPane.topAnchor="90.0" />
       <Label id="info_label" layoutX="649.0" layoutY="109.0" style="-fx-border-radius: 7; -fx-border-color: #2d3367; -fx-border-width: 2;" stylesheets="@../styles/label-style.css" text=" Interview " AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="140.0" />
@@ -75,5 +78,10 @@
             <Image url="@../images/up-arrow%20(1).png" />
          </image>
       </ImageView>
+      <Label fx:id="errorActionLabel" alignment="CENTER" layoutX="769.0" layoutY="388.0" prefHeight="35.0" prefWidth="155.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="25.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

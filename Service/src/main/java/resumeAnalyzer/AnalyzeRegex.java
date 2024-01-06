@@ -23,11 +23,6 @@ public enum AnalyzeRegex {
     ADDITIONAL("\\b(Award(s?)|AWARD(S)|Honor(s?)|HONOR(S?)|Certification(s?)|CERTIFICATION(S?)|Accomplishment(s?)|ACCOMPLISHMENT(S?)|Project(s?)|PROJECT(S?))\\b"),
     DATEFROMTO("([A-Za-z]+\\s)?([0-9]{4})\\s[-]\\s\\b((P|p)resent|(C|c)urrent)\\b|([A-Za-z]+\\s)?([0-9]{4})");
 
-    /**
-     * Note:
-     * - if you have a combination of words make sure you put them in the beginning of the list
-     */
-
     private final String name;
 
     AnalyzeRegex(String name) {

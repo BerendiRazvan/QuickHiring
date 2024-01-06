@@ -62,10 +62,13 @@ public class JobsAppliedController extends UnicastRemoteObject implements Initia
     ListView<ApplicationForJob> offerStatusList;
 
     @FXML
-    Label jobDetailsLabel;
+    TextArea jobDetailsTextArea;
 
     @FXML
-    Label applicationDetailsLabel;
+    TextArea applicationDetailsTextArea;
+
+    @FXML
+    Label errorActionLabel;
 
     public JobsAppliedController() throws RemoteException {
 
@@ -74,7 +77,6 @@ public class JobsAppliedController extends UnicastRemoteObject implements Initia
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
 
@@ -85,9 +87,19 @@ public class JobsAppliedController extends UnicastRemoteObject implements Initia
         this.loggedUser = user;
 
         initData();
+
+        applicationDetailsTextArea.textProperty().addListener(o -> {
+            errorActionLabel.setText("");
+            if (lastApplicationSelected == null)
+                withdrawApplicationButton.setDisable(true);
+            else
+                withdrawApplicationButton.setDisable(false);
+        });
     }
 
     private void initData() {
+        errorActionLabel.setText("");
+        withdrawApplicationButton.setDisable(true);
 
         uploadData();
 
@@ -109,32 +121,53 @@ public class JobsAppliedController extends UnicastRemoteObject implements Initia
             }
         });
 
-        appliedStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = appliedStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
+        appliedStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(appliedStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
-        inReviewStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = inReviewStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
+        inReviewStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(inReviewStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
-        interviewStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = interviewStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
+        interviewStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(interviewStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
-        offerStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = offerStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
+        offerStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(offerStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
+    }
+
+    private void clearSelectionsExcept(ListView<?> listView) {
+        ListView<?>[] lists = { appliedStatusList, inReviewStatusList, interviewStatusList, offerStatusList };
+        for (ListView<?> list : lists) {
+            if (list != listView) {
+                list.getSelectionModel().clearSelection();
+            }
+        }
     }
 
     private void displayApplicationInfo(ApplicationForJob application) {
         if (application != null) {
             Job job = application.getJobApplied();
-            jobDetailsLabel.setText(
+            jobDetailsTextArea.setText(
                     job.getTitle() + "   -   Applicants: " + server.getApplicantsNumber(job.getId()) + "\n\n" +
                             job.getCompany().getName() + "\n" +
                             job.getLocation().getCountry() + ", " + job.getLocation().getCity() + "\n" +
@@ -142,7 +175,7 @@ public class JobsAppliedController extends UnicastRemoteObject implements Initia
                             job.getDescription() + "\n\n" +
                             job.getPostingDate().getDayOfMonth() + "-" + job.getPostingDate().getMonth().toString() + "-" + job.getPostingDate().getYear());
 
-            applicationDetailsLabel.setText(
+            applicationDetailsTextArea.setText(
                     "Applied for this job on " +
                             application.getApplicationDate().getDayOfMonth() + "-" +
                             application.getApplicationDate().getMonth().toString() + "-" +
@@ -188,13 +221,15 @@ public class JobsAppliedController extends UnicastRemoteObject implements Initia
 
     @FXML
     protected void onActionWithdrawApplication() {
+        errorActionLabel.setText("");
         ApplicationForJob application = lastApplicationSelected;
         if (application != null) {
             try {
                 server.modifyApplicationStatus(application, ApplicationStatus.WITHDRAW, "Application withdrawn by the candidate");
                 uploadData();
+                errorActionLabel.setText("");
             } catch (ServiceException e) {
-                e.printStackTrace();
+                errorActionLabel.setText(e.getMessage());
             }
         }
     }

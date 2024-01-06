@@ -53,10 +53,13 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
     Label jobDetailsLabel;
 
     @FXML
-    Label candidateInfoLabel;
+    TextArea candidateInfoTextArea;
 
     @FXML
     Label errorLabel;
+
+    @FXML
+    Label errorActionLabel;
 
     @FXML
     ListView<ApplicationForJob> appliedStatusList;
@@ -131,49 +134,63 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
         this.selectedJob = job;
 
         initData();
+        clearErrors();
+        candidateInfoTextArea.textProperty().addListener(o -> clearErrors());
+    }
+
+    void clearErrors() {
+        errorActionLabel.setText("");
+        errorLabel.setText("");
     }
 
     private void initData() {
-        jobDetailsLabel.setText(selectedJob.toString());
-
         uploadData();
         setListListeners();
 
     }
 
     private void setListListeners() {
-        appliedStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = appliedStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
-            inReviewStatusList.getSelectionModel().clearSelection();
-            interviewStatusList.getSelectionModel().clearSelection();
-            offerStatusList.getSelectionModel().clearSelection();
+        appliedStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(appliedStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
-        inReviewStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = inReviewStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
-            appliedStatusList.getSelectionModel().clearSelection();
-            interviewStatusList.getSelectionModel().clearSelection();
-            offerStatusList.getSelectionModel().clearSelection();
+        inReviewStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(inReviewStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
-        interviewStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = interviewStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
-            appliedStatusList.getSelectionModel().clearSelection();
-            inReviewStatusList.getSelectionModel().clearSelection();
-            offerStatusList.getSelectionModel().clearSelection();
+        interviewStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(interviewStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
-        offerStatusList.getSelectionModel().selectedItemProperty().addListener(o -> {
-            lastApplicationSelected = offerStatusList.getSelectionModel().getSelectedItem();
-            displayApplicationInfo(lastApplicationSelected);
-            appliedStatusList.getSelectionModel().clearSelection();
-            inReviewStatusList.getSelectionModel().clearSelection();
-            interviewStatusList.getSelectionModel().clearSelection();
+        offerStatusList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lastApplicationSelected = newValue;
+                clearSelectionsExcept(offerStatusList);
+                displayApplicationInfo(lastApplicationSelected);
+            }
         });
 
+    }
+
+    private void clearSelectionsExcept(ListView<?> listView) {
+        ListView<?>[] lists = { appliedStatusList, inReviewStatusList, interviewStatusList, offerStatusList };
+        for (ListView<?> list : lists) {
+            if (list != listView) {
+                list.getSelectionModel().clearSelection();
+            }
+        }
     }
 
     private void displayApplicationInfo(ApplicationForJob application) {
@@ -181,7 +198,7 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
             enableButtons();
 
             User candidate = application.getCandidateResume().getOwner();
-            candidateInfoLabel.setText(candidate.getFirstName() + " " + candidate.getLastName() + "\n\n" +
+            candidateInfoTextArea.setText("\n" + candidate.getFirstName() + "\n" + candidate.getLastName() + "\n\n" +
                     "Contact data\n" +
                     "Mail: " + candidate.getMail() + "\n" +
                     "Phone number: " + candidate.getPhoneNumber() + "\n\n\n" +
@@ -194,7 +211,7 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
             imageProfileView.setImage(imageProfile);
 
         } else {
-            candidateInfoLabel.setText("");
+            candidateInfoTextArea.setText("");
         }
     }
 
@@ -244,8 +261,9 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
                 displayApplicationInfo(lastApplicationSelected);
                 errorLabel.setText("");
                 stepDetailsTextArea.setText("");
+                clearErrors();
             } catch (ServiceException e) {
-                e.printStackTrace();
+                errorActionLabel.setText(e.getMessage());
             }
         }
     }
@@ -267,8 +285,9 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
                 displayApplicationInfo(lastApplicationSelected);
                 errorLabel.setText("");
                 stepDetailsTextArea.setText("");
+                clearErrors();
             } catch (ServiceException e) {
-                e.printStackTrace();
+                errorActionLabel.setText(e.getMessage());
             }
         }
     }
@@ -290,8 +309,9 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
                 displayApplicationInfo(lastApplicationSelected);
                 errorLabel.setText("");
                 stepDetailsTextArea.setText("");
+                clearErrors();
             } catch (ServiceException e) {
-                e.printStackTrace();
+                errorActionLabel.setText(e.getMessage());
             }
         }
     }
@@ -312,8 +332,9 @@ public class ManageSelectionProcessController extends UnicastRemoteObject implem
                 displayApplicationInfo(lastApplicationSelected);
                 errorLabel.setText("");
                 stepDetailsTextArea.setText("");
+                clearErrors();
             } catch (ServiceException e) {
-                e.printStackTrace();
+                errorActionLabel.setText(e.getMessage());
             }
         }
     }

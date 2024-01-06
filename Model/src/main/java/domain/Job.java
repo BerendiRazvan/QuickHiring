@@ -40,6 +40,7 @@ public class Job implements Serializable {
     @Column(name = "TITLE")
     private String title;
 
+    @Lob
     @Column(name = "DESCRIPTION")
     private String description;
 

@@ -18,18 +18,32 @@
       <TextArea fx:id="descriptionTextArea" layoutX="467.0" layoutY="167.0" prefHeight="111.0" prefWidth="426.0" promptText="Enter job description" stylesheets="@../styles/text-area-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="165.0" />
       <Label id="info_label" layoutX="487.0" layoutY="75.0" stylesheets="@../styles/label-style.css" text="Job title " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" />
       <Label id="info_label" layoutX="477.0" layoutY="156.0" stylesheets="@../styles/label-style.css" text="Job description " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="155.0" />
-      <Label layoutX="20.0" layoutY="266.0" />
       <CheckBox id="info_checkbox" fx:id="openForApplicationsCheckBox" layoutX="687.0" layoutY="65.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="203.0" selected="true" stylesheets="@../styles/check-box-style.css" text="open for applications" AnchorPane.leftAnchor="675.0" AnchorPane.topAnchor="65.0" />
       <ComboBox fx:id="jobTypeComboBox" layoutX="753.0" layoutY="365.0" prefHeight="28.0" prefWidth="100.0" promptText="Job type" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="350.0" />
       <ComboBox fx:id="experienceLevelComboBox" layoutX="413.0" layoutY="365.0" prefHeight="28.0" prefWidth="150.0" promptText="Experience level" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="350.0" />
       <ComboBox fx:id="employmentTypeComboBox" layoutX="585.0" layoutY="365.0" prefHeight="28.0" prefWidth="157.0" promptText="Employment type" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="350.0" />
       <Label id="info_label" alignment="CENTER" layoutX="760.0" layoutY="347.0" prefWidth="100.0" stylesheets="@../styles/label-style.css" text="Job type" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="325.0" />
       <Label id="info_label" alignment="CENTER" layoutX="583.0" layoutY="336.0" prefWidth="157.0" stylesheets="@../styles/label-style.css" text="Employment type" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="325.0" />
-      <Label fx:id="errorJTitleLabel" layoutX="448.0" layoutY="125.0" prefHeight="18.0" prefWidth="250.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="120.0" />
-      <Label fx:id="errorJDLabel" layoutX="397.0" layoutY="276.0" prefHeight="18.0" prefWidth="250.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="275.0" />
-      <Label fx:id="errorJTLabel" layoutX="763.0" layoutY="393.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="380.0" />
-      <Label fx:id="errorETLabel" layoutX="595.0" layoutY="393.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="380.0" />
-      <Label fx:id="errorELLabel" layoutX="420.0" layoutY="380.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="380.0" />
+      <Label fx:id="errorJTitleLabel" alignment="TOP_RIGHT" layoutX="448.0" layoutY="125.0" prefHeight="18.0" prefWidth="250.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="120.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorJDLabel" alignment="TOP_RIGHT" layoutX="397.0" layoutY="276.0" prefHeight="18.0" prefWidth="426.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="275.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorJTLabel" alignment="CENTER" layoutX="763.0" layoutY="393.0" prefHeight="18.0" prefWidth="100.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="380.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorETLabel" alignment="CENTER" layoutX="595.0" layoutY="393.0" prefHeight="18.0" prefWidth="158.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="380.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label fx:id="errorELLabel" alignment="CENTER" layoutX="420.0" layoutY="380.0" prefHeight="18.0" prefWidth="150.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="380.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
       <ImageView fitHeight="104.0" fitWidth="150.0" layoutX="783.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="50.0">
          <image>
             <Image url="@../images/loginPageLogo.png" />
@@ -55,11 +69,19 @@
             <ListView fx:id="companyList" layoutX="57.0" layoutY="125.0" prefHeight="250.0" prefWidth="194.0" stylesheets="@../styles/list-style.css" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="125.0" />
             <Label id="info_label" alignment="CENTER" layoutX="57.0" layoutY="100.0" prefHeight="22.0" prefWidth="194.0" style="-fx-background-color: transparent;" stylesheets="@../styles/label-style.css" text="Select the company" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="100.0" />
             <ComboBox fx:id="locationsComboBox" disable="true" layoutX="93.0" layoutY="422.0" prefHeight="28.0" prefWidth="194.0" promptText="Location" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="425.0" />
-            <Label id="info_label" alignment="CENTER" layoutX="57.0" layoutY="400.0" prefHeight="22.0" prefWidth="194.0" style="-fx-background-color: transaprent;" stylesheets="@../styles/label-style.css" text="Company locations" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="400.0" />
-            <Label fx:id="errorCLLabel" layoutX="93.0" layoutY="460.0" prefHeight="18.0" prefWidth="194.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="460.0" />
+            <Label id="info_label" alignment="CENTER" layoutX="57.0" layoutY="400.0" prefHeight="22.0" prefWidth="194.0" style="-fx-background-color: transparent;" stylesheets="@../styles/label-style.css" text="Company locations" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="400.0" />
+            <Label fx:id="errorCLLabel" alignment="CENTER" layoutX="93.0" layoutY="460.0" prefHeight="18.0" prefWidth="194.0" text="error ..." textFill="RED" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="460.0">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
             <Button fx:id="infoButton" layoutX="27.0" layoutY="125.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-font-weight: bold;" stylesheets="@../styles/button-style.css" text="i" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="125.0" />
          </children>
       </AnchorPane>
       <Label id="info_label" alignment="CENTER" layoutX="419.0" layoutY="336.0" prefWidth="150.0" stylesheets="@../styles/label-style.css" text="Experience level" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="325.0" />
+      <Label fx:id="errorActionLabel" alignment="TOP_CENTER" layoutX="577.0" layoutY="510.0" prefHeight="35.0" prefWidth="185.0" text="error..." textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="195.0">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

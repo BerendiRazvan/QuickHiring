@@ -4,6 +4,16 @@ import domain.Resume;
 
 public class ResumeValidator implements Validator<Resume> {
 
+
+    public void validateInfoExtracted(Resume resume) throws ValidatorException {
+        if (resume.getEducationExtractedData().isEmpty() ||
+                resume.getExperienceExtractedData().isEmpty() ||
+                resume.getSkillsExtractedData().isEmpty() ||
+                resume.getProfileExtractedData().isEmpty()
+        )
+            throw new ValidatorException("Invalid resume!");
+    }
+
     @Override
     public void validate(Resume resume) throws ValidatorException {
         if (resume.getEducationExtractedData().isEmpty() ||

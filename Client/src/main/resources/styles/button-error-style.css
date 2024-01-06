@@ -1,0 +1,18 @@
+.button {
+    -fx-text-fill: white;
+    -fx-background-color: #2b305e;
+    -fx-background-radius: 10;
+    -fx-border-color: red;
+    -fx-border-radius: 8;
+    -fx-border-width: 1.5;
+}
+
+.button .text {
+    -fx-text-fill: white;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+}
+
+.button:hover {
+    -fx-background-color: #24339f;
+}

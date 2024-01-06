@@ -63,7 +63,7 @@ public class ManageJobsController extends UnicastRemoteObject implements Initial
     public TableColumn<Job, Location> jobLocationTableColumn;
 
     @FXML
-    Label jobInfoLabel;
+    TextArea jobInfoTextArea;
 
     @FXML
     Button manageSelectionButton;
@@ -128,7 +128,7 @@ public class ManageJobsController extends UnicastRemoteObject implements Initial
     private void setSelectedJob() {
         Job job = postedJobsTableView.getSelectionModel().getSelectedItem();
         if (job != null) {
-            jobInfoLabel.setText(job.getTitle() + "   -   Applicants: " + server.getApplicantsNumber(job.getId()) + "\n\n" +
+            jobInfoTextArea.setText(job.getTitle() + "   -   Applicants: " + server.getApplicantsNumber(job.getId()) + "\n\n" +
                     job.getCompany().getName() + "\n" +
                     job.getLocation().getCountry() + ", " + job.getLocation().getCity() + "\n" +
                     job.getEmploymentType() + " | " + job.getExperienceLevel() + " | " + job.getJobType() + "\n\n" +

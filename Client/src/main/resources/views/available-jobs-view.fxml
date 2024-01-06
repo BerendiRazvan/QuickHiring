@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -37,12 +38,12 @@
               <AnchorPane id="profileCard" layoutX="66.0" layoutY="78.0" prefHeight="438.0" prefWidth="360.0" style="-fx-background-color: transparent;" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="75.0">
                   <children>
                       <Button fx:id="applyButton" layoutX="228.0" layoutY="395.0" mnemonicParsing="false" onAction="#onActionApply" prefHeight="30.0" prefWidth="73.0" stylesheets="@../styles/button-style.css" text="Apply" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="57.0" />
-                      <Label id="info_label" fx:id="selectedJobLabel" alignment="TOP_LEFT" layoutX="20.5" layoutY="20.5" prefHeight="371.0" prefWidth="325.0" style="-fx-background-color: transparent; -fx-font-weight: bold;" stylesheets="@../styles/label-style.css" text="selected job info" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                   <ImageView fitHeight="43.0" fitWidth="63.0" layoutX="306.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.5" AnchorPane.rightAnchor="5.0">
                      <image>
                         <Image url="@../images/loginPageLogo.png" />
                      </image>
                   </ImageView>
+                  <TextArea fx:id="selectedJobTextArea" editable="false" layoutX="13.0" layoutY="14.0" prefHeight="112.0" prefWidth="132.0" promptText="Selected job details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                   </children>
               </AnchorPane>
             <Label alignment="CENTER" layoutX="72.0" layoutY="18.0" prefHeight="35.0" prefWidth="202.0" text="Available jobs" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
@@ -53,8 +54,7 @@
          </children>
       </AnchorPane>
       <ComboBox fx:id="orderByDate" layoutX="767.0" layoutY="76.0" prefHeight="40.0" prefWidth="132.0" promptText="Order by date" stylesheets="@../styles/combo-box-style.css" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="75.0" />
-      <TextField fx:id="searchBarTextField" layoutX="504.0" layoutY="75.0" prefHeight="43.0" prefWidth="261.0" promptText="Search job" stylesheets="@../styles/text-field-style.css" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="75.0" />
+      <TextField fx:id="searchBarTextField" layoutX="504.0" layoutY="75.0" prefHeight="43.0" prefWidth="261.0" promptText="Key words" stylesheets="@../styles/text-field-style.css" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="75.0" />
       <Label id="info_label" layoutX="515.0" layoutY="64.0" stylesheets="@../styles/label-style.css" text="Search job " AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="65.0" />
-      <ImageView fitHeight="26.0" fitWidth="32.0" layoutX="744.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

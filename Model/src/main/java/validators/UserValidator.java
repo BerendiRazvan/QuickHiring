@@ -37,11 +37,11 @@ public class UserValidator implements Validator<User> {
         String error = "";
 
         if (!isValidMail(user.getMail())) error += "Invalid email!\n";
-        if (!isValidPassword(user.getPassword())) error += "Invalid password!\n";
-        if (!isValidName(user.getFirstName())) error += "Invalid first name!\n";
-        if (!isValidName(user.getLastName())) error += "Invalid last name!\n";
-        if (!isValidBirthDate(user.getBirthDate())) error += "Invalid birth date!\n";
-        if (!isValidPhoneNumber(user.getPhoneNumber())) error += "Invalid phone number!\n";
+        if (!isValidPassword(user.getPassword())) error += "Invalid password! Requirements: min. 8 characters,; 1 uppercase, 1 lowercase, 1 digit.\n";
+        if (!isValidName(user.getFirstName())) error += "Invalid first name! Only characters allowed.\n";
+        if (!isValidName(user.getLastName())) error += "Invalid last name! Only characters allowed.\n";
+        if (!isValidBirthDate(user.getBirthDate())) error += "Invalid birth date! You must be at least 18 years old.\n";
+        if (!isValidPhoneNumber(user.getPhoneNumber())) error += "Invalid phone number! \n";
 
         if (!error.equals(""))
             throw new ValidatorException(error);

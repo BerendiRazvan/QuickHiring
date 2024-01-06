@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -36,12 +37,12 @@
             <Button fx:id="changeApplicationStatusButton" layoutX="149.0" layoutY="492.0" mnemonicParsing="false" onAction="#onActionChangeApplicationStatus" prefWidth="200.0" stylesheets="@../styles/button-style.css" text="Change application status" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="500.0" />
             <AnchorPane id="profileCard" layoutX="85.0" layoutY="71.0" prefHeight="320.0" prefWidth="300.0" style="-fx-background-color: transparent;" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="75.0">
                <children>
-                  <Label id="info_label" fx:id="jobInfoLabel" alignment="TOP_LEFT" layoutX="17.0" layoutY="16.0" prefHeight="219.0" prefWidth="266.0" style="-fx-background-color: transparent; -fx-font-weight: bold;" stylesheets="@../styles/label-style.css" text="selected job info" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                   <ImageView fitHeight="43.0" fitWidth="63.0" layoutX="175.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.5" AnchorPane.rightAnchor="5.0">
                      <image>
                         <Image url="@../images/loginPageLogo.png" />
                      </image>
                   </ImageView>
+                  <TextArea fx:id="jobInfoTextArea" editable="false" layoutX="50.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" promptText="Selected job details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
          </children>

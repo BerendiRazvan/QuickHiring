@@ -93,14 +93,16 @@ public class HomeController extends UnicastRemoteObject implements Initializable
 
                 if (item != null) {
                     if (loggedUser.getAccountType() == AccountType.RECRUITER)
-                        setText(item.toString() +" - Applicants: "+ server.getApplicantsNumber(item.getId()));
+                        setText(item.toString() + " - Applicants: " + server.getApplicantsNumber(item.getId()));
                     else
                         setText(item.toString());
                 }
             }
         });
 
-        userInfoLabel.setText(loggedUser.getFirstName() + "\n" + loggedUser.getLastName() + "\n" + loggedUser.getMail());
+        userInfoLabel.setText(loggedUser.getFirstName() + " " + loggedUser.getLastName() +
+                "\n" + loggedUser.getMail() +
+                "\n" + loggedUser.getPhoneNumber());
 
         // set profile image
         imageProfile = getProfileImage();

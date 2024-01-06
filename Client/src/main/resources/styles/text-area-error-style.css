@@ -1,0 +1,23 @@
+.text-area {
+    -fx-border-width: 2;
+    -fx-border-radius: 12.5;
+    -fx-border-color: red;
+    -fx-background-color: transparent;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+}
+
+.text-area .content{
+    -fx-border-radius: 12.5;
+    -fx-background-color: transparent;
+    -fx-background-radius: 12.5;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 15px;
+    -fx-text-fill: #2d3367;
+}
+
+.text-area .viewport {
+    -fx-background-color: transparent;
+}

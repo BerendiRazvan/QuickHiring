@@ -17,6 +17,7 @@ import javafx.scene.image.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import validators.ResumeValidator;
 
 import java.io.*;
 import java.net.URL;
@@ -24,6 +25,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddOrModifyAccountController extends UnicastRemoteObject implements Initializable, IObserver, Serializable {
@@ -117,6 +119,9 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
     Label errorImgLabel;
 
     @FXML
+    Label errorActionLabel;
+
+    @FXML
     TextField firstNameTextField;
 
     @FXML
@@ -204,6 +209,7 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
         errorATLabel.setText("");
         errorRLabel.setText("");
         errorImgLabel.setText("");
+        errorActionLabel.setText("");
     }
 
     private void initPageDataForCreateAcc() {
@@ -231,6 +237,80 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
         // add photo default
         imageProfile = getProfileImage();
         imageProfileView.setImage(imageProfile);
+
+
+        firstNameTextField.textProperty().addListener(o -> {
+            errorFNLabel.setText("");
+            errorActionLabel.setText("");
+            firstNameTextField.getStylesheets().clear();
+            firstNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        lastNameTextField.textProperty().addListener(o -> {
+            errorLNLabel.setText("");
+            errorActionLabel.setText("");
+            lastNameTextField.getStylesheets().clear();
+            lastNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        mailTextField.textProperty().addListener(o -> {
+            errorMLabel.setText("");
+            errorActionLabel.setText("");
+            mailTextField.getStylesheets().clear();
+            mailTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        mailCTextField.textProperty().addListener(o -> {
+            errorMCLabel.setText("");
+            errorActionLabel.setText("");
+            mailCTextField.getStylesheets().clear();
+            mailCTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        phoneNumberTextField.textProperty().addListener(o -> {
+            errorPNoLabel.setText("");
+            errorActionLabel.setText("");
+            phoneNumberTextField.getStylesheets().clear();
+            phoneNumberTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        birthDatePicker.valueProperty().addListener(o -> {
+            errorBDLabel.setText("");
+            errorActionLabel.setText("");
+            birthDatePicker.getStylesheets().clear();
+            birthDatePicker.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/date-picker-style.css")).toExternalForm());
+        });
+
+        passwordTextField.textProperty().addListener(o -> {
+            errorPLabel.setText("");
+            errorActionLabel.setText("");
+            passwordTextField.getStylesheets().clear();
+            passwordTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        passwordCTextField.textProperty().addListener(o -> {
+            errorPCLabel.setText("");
+            errorActionLabel.setText("");
+            passwordCTextField.getStylesheets().clear();
+            passwordCTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        accountTypeBox.valueProperty().addListener(o -> {
+            errorATLabel.setText("");
+            errorActionLabel.setText("");
+            accountTypeBox.getStylesheets().clear();
+            accountTypeBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-style.css")).toExternalForm());
+        });
+
     }
 
     private void initPageDataForModifyAcc() {
@@ -260,6 +340,56 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
         // add user photo
         imageProfile = getProfileImage();
         imageProfileView.setImage(imageProfile);
+
+        firstNameTextField.textProperty().addListener(o -> {
+            errorFNLabel.setText("");
+            errorActionLabel.setText("");
+            firstNameTextField.getStylesheets().clear();
+            firstNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        lastNameTextField.textProperty().addListener(o -> {
+            errorLNLabel.setText("");
+            errorActionLabel.setText("");
+            lastNameTextField.getStylesheets().clear();
+            lastNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        mailTextField.textProperty().addListener(o -> {
+            errorMLabel.setText("");
+            errorActionLabel.setText("");
+            mailTextField.getStylesheets().clear();
+            mailTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+
+        phoneNumberTextField.textProperty().addListener(o -> {
+            errorPNoLabel.setText("");
+            errorActionLabel.setText("");
+            phoneNumberTextField.getStylesheets().clear();
+            phoneNumberTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        passwordTextField.textProperty().addListener(o -> {
+            errorPLabel.setText("");
+            errorActionLabel.setText("");
+            passwordTextField.getStylesheets().clear();
+            passwordTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
+        passwordCTextField.textProperty().addListener(o -> {
+            errorPCLabel.setText("");
+            errorActionLabel.setText("");
+            passwordCTextField.getStylesheets().clear();
+            passwordCTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-style.css")).toExternalForm());
+        });
+
     }
 
     private Image getProfileImage() {
@@ -329,47 +459,80 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
         if (firstNameTextField.getText().isEmpty()) {
             errorFNLabel.setText("First name is empty");
             errors = true;
+            firstNameTextField.getStylesheets().clear();
+            firstNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (lastNameTextField.getText().isEmpty()) {
             errorLNLabel.setText("Last name is empty");
             errors = true;
+            lastNameTextField.getStylesheets().clear();
+            lastNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (mailTextField.getText().isEmpty()) {
-            errorMLabel.setText("Mail is empty");
+            errorMLabel.setText("Email is empty");
             errors = true;
+            mailTextField.getStylesheets().clear();
+            mailTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (mailCTextField.getText().isEmpty() && loggedUser == null) {
-            errorMCLabel.setText("Mail confirmation is empty");
+            errorMCLabel.setText("Email confirmation is empty");
             errors = true;
+            mailCTextField.getStylesheets().clear();
+            mailCTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (!mailTextField.getText().equals(mailCTextField.getText()) && loggedUser == null) {
-            errorMCLabel.setText("Different mail");
+            errorMCLabel.setText("Different email");
             errors = true;
+            mailCTextField.getStylesheets().clear();
+            mailCTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (passwordTextField.getText().isEmpty()) {
             errorPLabel.setText("Password is empty");
             errors = true;
+            passwordTextField.getStylesheets().clear();
+            passwordTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (passwordCTextField.getText().isEmpty()) {
             errorPCLabel.setText("Password confirmation is empty");
             errors = true;
+            passwordCTextField.getStylesheets().clear();
+            passwordCTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (!passwordTextField.getText().equals(passwordCTextField.getText())) {
             errorPCLabel.setText("Different password");
             errors = true;
+            passwordCTextField.getStylesheets().clear();
+            passwordCTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (phoneNumberTextField.getText().isEmpty()) {
             errorPNoLabel.setText("Phone number is empty");
             errors = true;
+            phoneNumberTextField.getStylesheets().clear();
+            phoneNumberTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/text-field-error-style.css")).toExternalForm());
         }
         if (accountTypeBox.getValue() == null) {
             errorATLabel.setText("Account type is not selected");
             errors = true;
+            accountTypeBox.getStylesheets().clear();
+            accountTypeBox.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("styles/combo-box-error-style.css")).toExternalForm());
         } else {
             if (loggedUser == null) {
                 if (accountTypeBox.getValue() == AccountType.CANDIDATE && resumeForUser == null) {
                     errorRLabel.setText("Resume is not uploaded");
                     errors = true;
+                    uploadResumeButton.getStylesheets().clear();
+                    uploadResumeButton.getStylesheets().add(Objects.requireNonNull(getClass()
+                            .getResource("styles/button-error-style.css")).toExternalForm());
                 }
             }
         }
@@ -402,6 +565,7 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
                         server.addResume(resumeForUser);
                     }
                     //login
+                    clearErrorMsg();
                     setHomeController();
                     User currentUser = server.login(loggedUser, homeController);
                     openHomeView(currentUser, event);
@@ -413,6 +577,7 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
                         resumeForUser.setOwner(loggedUser);
                         server.addResume(resumeForUser);
                     }
+                    clearErrorMsg();
                     setupFields();
 
                     //go back to home page
@@ -424,13 +589,83 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
                     }
                 }
             } catch (ServiceException | IOException e) {
-                e.printStackTrace();
+                errorActionLabel.setText("Invalid account data!");
+                setErrors(e.getMessage());
             }
+        }
+    }
+
+    private void setErrors(String m) {
+        boolean ok = true;
+
+        String[] errors = m.split("\n");
+        for (String message : errors) {
+            message = message.replace("!", "!\n");
+            message = message.replace(";", "\n");
+
+            if (message.toLowerCase().contains("email")) {
+                ok = false;
+                errorMLabel.setText(message);
+                mailTextField.getStylesheets().clear();
+                mailTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/text-field-error-style.css")).toExternalForm());
+            }
+            if (message.toLowerCase().contains("password")) {
+                ok = false;
+                errorPLabel.setText(message);
+                passwordTextField.getStylesheets().clear();
+                passwordTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/text-field-error-style.css")).toExternalForm());
+            }
+            if (message.toLowerCase().contains("first name")) {
+                ok = false;
+                errorFNLabel.setText(message);
+                firstNameTextField.getStylesheets().clear();
+                firstNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/text-field-error-style.css")).toExternalForm());
+            }
+            if (message.toLowerCase().contains("last name")) {
+                ok = false;
+                errorLNLabel.setText(message);
+                lastNameTextField.getStylesheets().clear();
+                lastNameTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/text-field-error-style.css")).toExternalForm());
+            }
+            if (message.toLowerCase().contains("birth date")) {
+                ok = false;
+                errorBDLabel.setText(message);
+                birthDatePicker.getStylesheets().clear();
+                birthDatePicker.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/date-picker-error-style.css")).toExternalForm());
+            }
+            if (message.toLowerCase().contains("phone number")) {
+                ok = false;
+                errorPNoLabel.setText(message);
+                phoneNumberTextField.getStylesheets().clear();
+                phoneNumberTextField.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/text-field-error-style.css")).toExternalForm());
+            }
+            if (message.toLowerCase().contains("resume")) {
+                ok = false;
+                errorRLabel.setText(message);
+                uploadResumeButton.getStylesheets().clear();
+                uploadResumeButton.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/button-error-style.css")).toExternalForm());
+            }
+
+            if (ok)
+                errorActionLabel.setText(message);
         }
     }
 
     @FXML
     protected void onActionSelectResume(ActionEvent event) {
+        errorRLabel.setText("");
+        errorActionLabel.setText("");
+        uploadResumeButton.getStylesheets().clear();
+        uploadResumeButton.getStylesheets().add(Objects.requireNonNull(getClass()
+                .getResource("styles/button-style.css")).toExternalForm());
+
         FileChooser fileChooser = new FileChooser();
 
         // Set extension filter
@@ -442,12 +677,18 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
         File file = fileChooser.showOpenDialog(stage);
         if (file != null) {
             System.out.println(file.getName() + "\n" + file.getAbsolutePath());
-            uploadResumeButton.setText(file.getName() + " - successfully uploaded");
+            uploadResumeButton.setText(file.getName() + " - uploaded");
             // set to green
             try {
                 resumeForUser = server.analyzeResume(file);
-            } catch (ServiceException e) {
-                e.printStackTrace();
+                ResumeValidator resumeValidator = new ResumeValidator();
+                resumeValidator.validateInfoExtracted(resumeForUser);
+            } catch (Exception e) {
+                errorRLabel.setText("Invalid resume!\n");
+                uploadResumeButton.getStylesheets().clear();
+                uploadResumeButton.getStylesheets().add(Objects.requireNonNull(getClass()
+                        .getResource("styles/button-error-style.css")).toExternalForm());
+
             }
             // autofill fields from extracted data if you create an account (create)
         }

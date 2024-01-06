@@ -46,7 +46,7 @@ public class AvailableJobsController extends UnicastRemoteObject implements Init
     TableView<Job> jobsTableView;
 
     @FXML
-    Label selectedJobLabel;
+    TextArea selectedJobTextArea;
 
     @FXML
     public TableColumn<Job, String> jobTitleTableColumn;
@@ -104,7 +104,7 @@ public class AvailableJobsController extends UnicastRemoteObject implements Init
                 applyButton.setDisable(false);
                 applyButton.setText("Apply");
             }
-            selectedJobLabel.setText(job.getTitle() + "   -   Applicants: " + server.getApplicantsNumber(job.getId()) + "\n\n" +
+            selectedJobTextArea.setText(job.getTitle() + "   -   Applicants: " + server.getApplicantsNumber(job.getId()) + "\n\n" +
                     job.getCompany().getName() + "\n" +
                     job.getLocation().getCountry() + ", " + job.getLocation().getCity() + "\n" +
                     job.getEmploymentType() + " | " + job.getExperienceLevel() + " | " + job.getJobType() + "\n\n" +
