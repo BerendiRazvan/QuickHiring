@@ -10,9 +10,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
    <children>
-      <ListView fx:id="jobsList" layoutX="410.0" layoutY="322.0" prefHeight="139.0" prefWidth="455.0" stylesheets="@../styles/list-style.css" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="85.0" />
-      <Label id="info_label" fx:id="jobsLabel" alignment="CENTER" layoutX="409.0" layoutY="298.0" prefHeight="22.0" prefWidth="455.0" stylesheets="@../styles/label-style.css" text="jobs recom C (5 jobs based on your profile info)/jobs posted R" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="85.0" />
-      <Button fx:id="quickApplyButton" layoutX="726.0" layoutY="470.0" mnemonicParsing="false" onAction="#onActionQuickApply" prefHeight="30.0" prefWidth="138.0" stylesheets="@../styles/button-style.css" text="Quick apply" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="85.0" />
+      <ListView fx:id="jobsList" layoutX="410.0" layoutY="322.0" prefHeight="139.0" prefWidth="455.0" stylesheets="@../styles/list-style.css" visible="false" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="85.0" />
+      <Label id="info_label" fx:id="jobsLabel" alignment="CENTER" layoutX="409.0" layoutY="298.0" prefHeight="22.0" prefWidth="455.0" stylesheets="@../styles/label-style.css" text="jobs recom C (5 jobs based on your profile info)/jobs posted R" visible="false" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="85.0" />
+      <Button fx:id="quickApplyButton" layoutX="726.0" layoutY="470.0" mnemonicParsing="false" onAction="#onActionQuickApply" prefHeight="30.0" prefWidth="138.0" stylesheets="@../styles/button-style.css" text="Quick apply" visible="false" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="85.0" />
       <AnchorPane id="profileCard" layoutX="410.0" layoutY="41.0" prefHeight="218.0" prefWidth="455.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="50.0">
          <children>
             <Button fx:id="editAccountButton" contentDisplay="RIGHT" layoutX="361.0" layoutY="132.0" mnemonicParsing="false" onAction="#onActionOpenAddOrModifyAccountView" prefHeight="55.0" prefWidth="62.0" style="-fx-background-color: transparent;" stylesheets="@../styles/button-style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
@@ -33,9 +33,9 @@
       </AnchorPane>
       <AnchorPane id="paneMain" layoutX="40.0" layoutY="47.0" prefHeight="550.0" prefWidth="410.0" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="manageJobsButton" layoutX="108.0" layoutY="213.0" mnemonicParsing="false" onAction="#onActionManageJobs" stylesheets="@../styles/button-style.css" text="Manage jobs" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="150.0" />
+            <Button fx:id="manageJobsButton" layoutX="108.0" layoutY="213.0" mnemonicParsing="false" onAction="#onActionManageJobs" stylesheets="@../styles/button-style.css" text="Manage internships" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="150.0" />
             <Button fx:id="applicationButton" layoutX="101.0" layoutY="165.0" mnemonicParsing="false" onAction="#onActionMyApplications" stylesheets="@../styles/button-style.css" text="My applications" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="170.0" />
-            <Button fx:id="jobsAvailableButton" layoutX="107.0" layoutY="119.0" mnemonicParsing="false" onAction="#onActionJobsAvailable" stylesheets="@../styles/button-style.css" text="Jobs available" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="125.0" />
+            <Button fx:id="jobsAvailableButton" layoutX="107.0" layoutY="119.0" mnemonicParsing="false" onAction="#onActionJobsAvailable" stylesheets="@../styles/button-style.css" text="Internships available" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="125.0" />
             <Label alignment="CENTER" layoutX="125.0" layoutY="42.0" text="Home page" textFill="#2d3367" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="40.0">
                <font>
                   <Font name="Calibri Bold" size="30.0" />

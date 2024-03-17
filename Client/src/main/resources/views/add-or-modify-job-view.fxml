@@ -14,10 +14,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddOrModifyJobController">
    <children>
-      <TextField fx:id="titleTextField" layoutX="472.0" layoutY="86.0" prefHeight="43.0" prefWidth="250.0" promptText="Enter job title" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="75.0" />
-      <TextArea fx:id="descriptionTextArea" layoutX="467.0" layoutY="167.0" prefHeight="111.0" prefWidth="426.0" promptText="Enter job description" stylesheets="@../styles/text-area-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="165.0" />
-      <Label id="info_label" layoutX="487.0" layoutY="75.0" stylesheets="@../styles/label-style.css" text="Job title " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" />
-      <Label id="info_label" layoutX="477.0" layoutY="156.0" stylesheets="@../styles/label-style.css" text="Job description " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="155.0" />
+      <TextField fx:id="titleTextField" layoutX="472.0" layoutY="86.0" prefHeight="43.0" prefWidth="250.0" promptText="Enter internship title" stylesheets="@../styles/text-field-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="75.0" />
+      <TextArea fx:id="descriptionTextArea" layoutX="467.0" layoutY="167.0" prefHeight="111.0" prefWidth="426.0" promptText="Enter internship description" stylesheets="@../styles/text-area-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="165.0" />
+      <Label id="info_label" layoutX="487.0" layoutY="75.0" stylesheets="@../styles/label-style.css" text="Internship title " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="65.0" />
+      <Label id="info_label" layoutX="477.0" layoutY="156.0" stylesheets="@../styles/label-style.css" text="Internship description " AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="155.0" />
       <CheckBox id="info_checkbox" fx:id="openForApplicationsCheckBox" layoutX="687.0" layoutY="65.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="203.0" selected="true" stylesheets="@../styles/check-box-style.css" text="open for applications" AnchorPane.leftAnchor="675.0" AnchorPane.topAnchor="65.0" />
       <ComboBox fx:id="jobTypeComboBox" layoutX="753.0" layoutY="365.0" prefHeight="28.0" prefWidth="100.0" promptText="Job type" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="350.0" />
       <ComboBox fx:id="experienceLevelComboBox" layoutX="413.0" layoutY="365.0" prefHeight="28.0" prefWidth="150.0" promptText="Experience level" stylesheets="@../styles/combo-box-style.css" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="350.0" />
@@ -61,7 +61,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="pageLabel" alignment="CENTER" layoutX="65.0" layoutY="22.0" prefWidth="194.0" text="add/modify job" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
+            <Label fx:id="pageLabel" alignment="CENTER" layoutX="65.0" layoutY="22.0" prefHeight="35.0" prefWidth="292.0" text="add/modify internship" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="Calibri Bold" size="30.0" />
                </font>

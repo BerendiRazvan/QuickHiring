@@ -167,14 +167,9 @@ public class AddOrModifyAccountController extends UnicastRemoteObject implements
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        phoneNumberTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(
-                    ObservableValue<? extends String> observable,
-                    String oldValue, String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    phoneNumberTextField.setText(newValue.replaceAll("[^\\d]", ""));
-                }
+        phoneNumberTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                phoneNumberTextField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
     }

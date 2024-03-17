@@ -25,14 +25,14 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label alignment="CENTER" layoutX="68.0" layoutY="26.0" prefWidth="300.0" text="Posted jobs" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
+            <Label alignment="CENTER" layoutX="68.0" layoutY="26.0" prefWidth="300.0" text="Posted internships" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="Calibri Bold" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="addNewJobButton" layoutX="75.0" layoutY="442.0" mnemonicParsing="false" onAction="#onActionAddJob" prefWidth="100.0" stylesheets="@../styles/button-style.css" text="Add new job" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="455.0" />
-            <Button fx:id="modifyJobButton" layoutX="177.0" layoutY="455.0" mnemonicParsing="false" onAction="#onActionModifyJob" prefWidth="100.0" stylesheets="@../styles/button-style.css" text="Modify job" AnchorPane.leftAnchor="177.0" AnchorPane.topAnchor="455.0" />
-            <Button fx:id="removeJobButton" layoutX="286.0" layoutY="442.0" mnemonicParsing="false" onAction="#onActionRemoveJob" prefWidth="100.0" stylesheets="@../styles/button-style.css" text="Remove job" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="455.0" />
+            <Button fx:id="addNewJobButton" layoutX="6.0" layoutY="442.0" mnemonicParsing="false" onAction="#onActionAddJob" prefHeight="26.0" prefWidth="149.0" stylesheets="@../styles/button-style.css" text="Add new internship" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="455.0" />
+            <Button fx:id="modifyJobButton" layoutX="162.0" layoutY="455.0" mnemonicParsing="false" onAction="#onActionModifyJob" prefHeight="26.0" prefWidth="132.0" stylesheets="@../styles/button-style.css" text="Modify internship" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="455.0" />
+            <Button fx:id="removeJobButton" layoutX="300.0" layoutY="455.0" mnemonicParsing="false" onAction="#onActionRemoveJob" prefHeight="26.0" prefWidth="142.0" stylesheets="@../styles/button-style.css" text="Remove internship" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="455.0" />
             <Button fx:id="manageSelectionButton" layoutX="125.0" layoutY="412.0" mnemonicParsing="false" onAction="#onActionManageSelection" prefWidth="200.0" stylesheets="@../styles/button-style.css" text="Manage selection process" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="412.0" />
             <Button fx:id="changeApplicationStatusButton" layoutX="149.0" layoutY="492.0" mnemonicParsing="false" onAction="#onActionChangeApplicationStatus" prefWidth="200.0" stylesheets="@../styles/button-style.css" text="Change application status" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="500.0" />
             <AnchorPane id="profileCard" layoutX="85.0" layoutY="71.0" prefHeight="320.0" prefWidth="300.0" style="-fx-background-color: transparent;" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="75.0">
@@ -42,7 +42,7 @@
                         <Image url="@../images/loginPageLogo.png" />
                      </image>
                   </ImageView>
-                  <TextArea fx:id="jobInfoTextArea" editable="false" layoutX="50.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" promptText="Selected job details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <TextArea fx:id="jobInfoTextArea" editable="false" layoutX="50.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" promptText="Selected internship details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
          </children>
@@ -57,8 +57,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="searchJobTextField" layoutX="550.0" layoutY="84.0" prefHeight="43.0" prefWidth="261.0" promptText="Search job" stylesheets="@../styles/text-field-style.css" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="75.0" />
+      <TextField fx:id="searchJobTextField" layoutX="550.0" layoutY="84.0" prefHeight="43.0" prefWidth="261.0" promptText="Search internship" stylesheets="@../styles/text-field-style.css" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="75.0" />
       <ComboBox fx:id="orderByDate" layoutX="770.0" layoutY="74.0" prefHeight="40.0" prefWidth="132.0" promptText="Order by date" stylesheets="@../styles/combo-box-style.css" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="75.0" />
-      <Label id="info_label" layoutX="564.0" layoutY="41.0" stylesheets="@../styles/label-style.css" text="Search job " AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="65.0" />
+      <Label id="info_label" layoutX="516.0" layoutY="64.0" stylesheets="@../styles/label-style.css" text="Search internship " AnchorPane.rightAnchor="309.20000000000005" AnchorPane.topAnchor="64.0" />
    </children>
 </AnchorPane>

@@ -46,7 +46,7 @@
                   <TextArea fx:id="selectedJobTextArea" editable="false" layoutX="13.0" layoutY="14.0" prefHeight="112.0" prefWidth="132.0" promptText="Selected job details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                   </children>
               </AnchorPane>
-            <Label alignment="CENTER" layoutX="72.0" layoutY="18.0" prefHeight="35.0" prefWidth="202.0" text="Available jobs" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
+            <Label alignment="CENTER" layoutX="72.0" layoutY="18.0" prefHeight="35.0" prefWidth="319.0" text="Available internships" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="Calibri Bold" size="30.0" />
                </font>
@@ -55,6 +55,6 @@
       </AnchorPane>
       <ComboBox fx:id="orderByDate" layoutX="767.0" layoutY="76.0" prefHeight="40.0" prefWidth="132.0" promptText="Order by date" stylesheets="@../styles/combo-box-style.css" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="75.0" />
       <TextField fx:id="searchBarTextField" layoutX="504.0" layoutY="75.0" prefHeight="43.0" prefWidth="261.0" promptText="Key words" stylesheets="@../styles/text-field-style.css" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="75.0" />
-      <Label id="info_label" layoutX="515.0" layoutY="64.0" stylesheets="@../styles/label-style.css" text="Search job " AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="65.0" />
+      <Label id="info_label" layoutX="515.0" layoutY="64.0" prefHeight="22.0" prefWidth="126.0" stylesheets="@../styles/label-style.css" text="Search internship " AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="64.0" />
     </children>
 </AnchorPane>

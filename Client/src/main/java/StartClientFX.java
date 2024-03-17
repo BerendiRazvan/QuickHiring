@@ -66,7 +66,7 @@ public class StartClientFX extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setMinWidth(950);
         primaryStage.setMinHeight(550);
-        primaryStage.setTitle("QuickHiring - Login");
+        primaryStage.setTitle("InternHiring - Login");
         primaryStage.getIcons().add(new Image(StartClientFX.class.getResource("images/appLogo.jpg").toExternalForm()));
         primaryStage.show();
     }

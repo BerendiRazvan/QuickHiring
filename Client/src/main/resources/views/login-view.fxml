@@ -18,12 +18,12 @@
                   <Image url="@../images/loginPageLogo.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="121.0" layoutY="75.0" text="QuickHiring" textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="90.0">
+            <Label alignment="CENTER" layoutX="121.0" layoutY="75.0" text="InternHiring" textAlignment="CENTER" textFill="#2d3367" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="90.0">
                <font>
                   <Font name="Calibri Bold" size="50.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="161.0" layoutY="134.0" prefHeight="18.0" prefWidth="256.0" text="Find a job easier and quicker" textAlignment="CENTER" textFill="#e77218" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="150.0">
+            <Label alignment="CENTER" layoutX="161.0" layoutY="134.0" prefHeight="18.0" prefWidth="256.0" text="Find an internship easier and quicker" textAlignment="CENTER" textFill="#e77218" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="150.0">
                <font>
                   <Font name="Calibri Light" size="17.0" />
                </font>

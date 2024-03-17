@@ -134,7 +134,7 @@ public class HomeController extends UnicastRemoteObject implements Initializable
     }
 
     private void initCandidatePage() {
-        quickApplyButton.setVisible(true);
+        quickApplyButton.setVisible(false);
         quickApplyButton.setDisable(true);
         jobsAvailableButton.setVisible(true);
         applicationButton.setVisible(true);

@@ -24,7 +24,7 @@
             </Button>
             <AnchorPane id="profileCard" layoutX="28.0" layoutY="73.0" prefHeight="225.0" prefWidth="210.0" style="-fx-background-color: transparent;" stylesheets="@../styles/ancor-pane-style.css" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="75.0">
                <children>
-                  <TextArea fx:id="jobDetailsTextArea" editable="false" layoutX="5.0" layoutY="13.0" prefHeight="200.0" prefWidth="200.0" promptText="Job details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <TextArea fx:id="jobDetailsTextArea" editable="false" layoutX="5.0" layoutY="13.0" prefHeight="200.0" prefWidth="200.0" promptText="Internship details..." stylesheets="@../styles/info-text-area-style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                </children>
             </AnchorPane>
             <AnchorPane id="profileCard" layoutX="28.0" layoutY="313.0" prefHeight="225.0" prefWidth="210.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="310.0">
@@ -63,7 +63,7 @@
             <Image url="@../images/up-arrow%20(1).png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="493.0" layoutY="24.0" prefHeight="35.0" prefWidth="175.0" text="Applications" textFill="#2d3367" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="30.0">
+      <Label alignment="CENTER" layoutX="493.0" layoutY="24.0" prefHeight="35.0" prefWidth="382.0" text="Internships applications" textFill="#2d3367" AnchorPane.rightAnchor="191.0" AnchorPane.topAnchor="30.0">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
